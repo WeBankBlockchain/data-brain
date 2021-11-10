@@ -1,0 +1,13 @@
+package com.webank.databrain.provider;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DataBrainProviderApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DataBrainProviderApplication.class, args);
+	}
+
+}

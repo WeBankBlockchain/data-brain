@@ -1,0 +1,54 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+		mavenLocal()
+	}
+}
+
+plugins {
+	id 'org.springframework.boot' version '2.5.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'eclipse'
+	id 'idea'
+	id 'java'
+}
+
+
+allprojects {
+	repositories {
+		mavenCentral()
+		google()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+		//maven { url 'https://www.jitpack.io' }
+		mavenLocal()
+	}
+}
+
+subprojects {
+	group = 'com.webank.databrain'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '1.8'
+
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'idea'
+
+	dependencies {
+		implementation 'org.springframework.boot:spring-boot-starter-security'
+		implementation 'org.springframework.boot:spring-boot-starter'
+		implementation('org.springframework.boot:spring-boot-starter-web')
+		implementation('org.springframework.boot:spring-boot-configuration-processor')
+
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+		compileOnly 'org.projectlombok:lombok:1.18.10'
+		annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+		test {
+			useJUnitPlatform()
+		}
+	}
+}
+
+
