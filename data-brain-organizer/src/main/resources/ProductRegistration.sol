@@ -3,23 +3,11 @@ pragma solidity ^0.4.25;
 import "./Ownership.sol";
 
 
-contract EnterpriseRegistration is Ownership{
+contract ProductRegistration is Ownership{
 
-    //认证信息
-    struct  CertificationInfo{
-        uint8 certType;
-        string certNo;
-        string representativeName;
-        uint8 representativeCertType;
-        string representativeCertNo;
-        //企业类型
-        uint8 type;
-    }
-
-    //企业信息
-    struct Enterprise{
+    struct Product{
         //公钥地址
-        string externalAddress;
+        string id;
         //企业名称
         string name;
         //手机号
@@ -30,12 +18,9 @@ contract EnterpriseRegistration is Ownership{
         string email;
         //状态：0-已注册 1-已认证 2-已销户
         uint8 status;
-        //操作时间戳
-        uint256[] timestamps;
     }
 
     mapping(address=>Enterprise) private enterprises;
-    mapping(address=>CertificationInfo) private certifications;
 
     //注册企业数据
     function registerEnterprise(string externalAddress, string name, string phone, string location, string email) public onlyOwner{
@@ -43,7 +28,7 @@ contract EnterpriseRegistration is Ownership{
     }
 
     //认证企业数据
-    function validateEnterprise(address externalAddress, uint8 certType,string certNo,string representativeName,uint8 representativeCertType,string representativeCertNo) public onlyOwner {
+    function validateEnterprise(address externalAddress) public onlyOwner {
 
     }
 
@@ -54,11 +39,6 @@ contract EnterpriseRegistration is Ownership{
 
     //修改企业信息
     function modifyEnterprise(string externalAddress, string name, string phone, string location, string email) public onlyOwner {
-
-    }
-
-    //修改认证信息
-    function modifyEnterprise(address externalAddress, uint8 certType,string certNo,string representativeName,uint8 representativeCertType,string representativeCertNo) public onlyOwner {
 
     }
 
