@@ -16,11 +16,11 @@ contract AuthCertificateRecordManager {
         //授权记录ID
         string authRecordId;
         //接收方地址
-        string receiverId;
+        address receiverId;
         //提供方地址
-        string providerId;
+        address providerId;
         //用户地址
-        string userId;
+        address userId;
         //数据
         string schemaId;
         // [0]: authType; [1]: authState; [2]: transferState;
@@ -66,7 +66,7 @@ contract AuthCertificateRecordManager {
     /**
      * 用户提交授权记录，并初始化授权状态为1
      */
-    function authByUser(string authRecordId, string receiverId, string providerId, string userId,string schemaId,uint256 validPeriod,string purposeId) public {
+    function authByUser(string authRecordId, address receiverId, address providerId, address userId,string schemaId,uint256 validPeriod,string purposeId) public {
         //1、用户账户鉴权
         //2、授权记录ID在链上递增，创建授权记录
     }
@@ -104,7 +104,7 @@ contract AuthCertificateRecordManager {
     /**
      * 查询授权记录
      */
-    function getAuthCertificateRecordById(string authRecordId) public view returns(string, string, string, string, string, uint8[3], uint,string, string,uint8[2]) {
+    function getAuthCertificateRecordById(string authRecordId) public view returns(string, address, address, address, string, uint8[3], uint,string, string,uint8[2]) {
 
     }
 
