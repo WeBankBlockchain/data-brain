@@ -7,7 +7,7 @@ contract AuthCertificateRecordManager {
     mapping(string => AuthCertificateRecord) private _authCertificateRecordMap;
     mapping(string => Purpose) private _purposeMap;
 
-    ProductRegistration public _productRegistration.sol;
+    ProductRegistration public _productRegistration;
 
     uint256 private _authCertificateRecordCount;
     uint256 private _purposeCount;
@@ -52,8 +52,8 @@ contract AuthCertificateRecordManager {
     }
 
 
-    constructor(address enterpriseRegistrationAddr) public {
-        _enterpriseRegistration = EnterpriseRegistration(enterpriseRegistrationAddr);
+    constructor(address productRegistrationAddr) public {
+        _productRegistration = ProductRegistration(productRegistrationAddr);
     }
 
     /**
@@ -74,7 +74,7 @@ contract AuthCertificateRecordManager {
     /**
      * 取消授权记录，修改授权状态为已取消
      */
-    function revoke(string authRecordId) public  {
+    function revokeByUser(string authRecordId) public  {
         //1、用户账户鉴权
     }
 
