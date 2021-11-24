@@ -1,49 +1,40 @@
 pragma solidity ^0.4.25;
 
 import "./Ownership.sol";
-
+import "./EnterpriseRegistration.sol";
 
 contract ProductRegistration is Ownership{
 
+    EnterpriseRegistration public enterpriseRegistration;
+
     struct Product{
-        //公钥地址
-        string id;
-        //企业名称
+        //产品地址
+        address productAddress;
+        //机构地址
+        address owner;
+        //产品名称
         string name;
-        //手机号
-        string phone;
-        //联系地址
-        string location;
-        //邮箱地址
-        string email;
-        //状态：0-已注册 1-已认证 2-已销户
-        uint8 status;
+        //产品描述
+        string description;
+        //产品类别
+        uint256 category;
+        //负责人联系方式
+        string contact;
     }
 
-    mapping(address=>Enterprise) private enterprises;
+    mapping(address=>Product) private enterprises;
 
-    //注册企业数据
-    function registerEnterprise(string externalAddress, string name, string phone, string location, string email) public onlyOwner{
-
+    function setEnterpriseRegistration(EnterpriseRegistration _enterpriseRegistration) public onlyOwner{
+        enterpriseRegistration = _enterpriseRegistration;
     }
 
-    //认证企业数据
-    function validateEnterprise(address externalAddress) public onlyOwner {
-
-    }
-
-    //取消认证
-    function invalidateEnterprise(address externalAddress) public onlyOwner {
-
-    }
-
-    //修改企业信息
-    function modifyEnterprise(string externalAddress, string name, string phone, string location, string email) public onlyOwner {
+    //注册产品
+    function registerProduct(string productAddress, string name, string description, uint256 category, string contact) public onlyOwner{
 
     }
 
     //销户企业
-    function removeEnterprise(string externalAddress) public onlyOwner {
+    function removeProduct(string productAddress) public onlyOwner {
 
     }
 }
