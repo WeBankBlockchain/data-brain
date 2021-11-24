@@ -59,7 +59,7 @@ contract AuthCertificateRecordManager {
     /**
      * 创建用途
      */
-    function createPurpose(string purposeId,string name,string abstract,string note) public returns(uint256){
+    function createPurpose(string name,string abstract,string note,uint8 useType,uint8 storeEnable) public returns(uint256){
 
     }
 
