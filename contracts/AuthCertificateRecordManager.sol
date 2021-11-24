@@ -10,6 +10,7 @@ contract AuthCertificateRecordManager {
     EnterpriseRegistration public _enterpriseRegistration;
 
     uint256 private _authCertificateRecordCount;
+    uint256 private _purposeCount;
 
     struct AuthCertificateRecord {
         //授权记录ID
@@ -58,7 +59,7 @@ contract AuthCertificateRecordManager {
     /**
      * 创建用途
      */
-    function createPurpose(string purposeId,string name,string abstract,string note) public {
+    function createPurpose(string purposeId,string name,string abstract,string note) public returns(uint256){
 
     }
 
@@ -67,7 +68,7 @@ contract AuthCertificateRecordManager {
      */
     function authByUser(string authRecordId, string receiverId, string providerId, string userId,string schemaId,uint256 validPeriod,string purposeId) public {
         //1、用户账户鉴权
-        //2、创建授权记录
+        //2、授权记录ID在链上递增，创建授权记录
     }
 
     /**
