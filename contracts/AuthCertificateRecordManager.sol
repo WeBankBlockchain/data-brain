@@ -5,7 +5,7 @@ import "./EnterpriseRegistration.sol";
 contract AuthCertificateRecordManager {
 
     mapping(string => AuthCertificateRecord) private _authCertificateRecordMap;
-    mapping(string => Use) private _useMap;
+    mapping(string => Purpose) private _purposeMap;
 
     EnterpriseRegistration public _enterpriseRegistration;
 
@@ -67,8 +67,7 @@ contract AuthCertificateRecordManager {
      */
     function authByUser(string authRecordId, string receiverId, string providerId, string userId,string schemaId,uint256 validPeriod,string purposeId) public {
         //1、用户账户鉴权
-        //2、根据schemaId查询对应目录
-        //3、创建授权记录
+        //2、创建授权记录
     }
 
     /**
