@@ -1,6 +1,6 @@
 pragma solidity ^0.4.25;
 
-import "./ProductRegistration.sol";
+import "./ProductManager.sol";
 
 contract AuthCertificateRecordManager {
 
