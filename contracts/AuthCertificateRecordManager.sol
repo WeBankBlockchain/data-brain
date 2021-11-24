@@ -1,13 +1,13 @@
 pragma solidity ^0.4.25;
 
-import "./EnterpriseRegistration.sol";
+import "./ProductRegistration.sol";
 
 contract AuthCertificateRecordManager {
 
     mapping(string => AuthCertificateRecord) private _authCertificateRecordMap;
     mapping(string => Purpose) private _purposeMap;
 
-    EnterpriseRegistration public _enterpriseRegistration;
+    ProductRegistration public _productRegistration.sol;
 
     uint256 private _authCertificateRecordCount;
     uint256 private _purposeCount;
