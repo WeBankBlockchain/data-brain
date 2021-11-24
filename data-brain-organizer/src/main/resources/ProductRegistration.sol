@@ -22,7 +22,7 @@ contract ProductRegistration is Ownership{
         string contact;
     }
 
-    mapping(address=>Product) private enterprises;
+    mapping(address=>Product) private products;
 
     function setEnterpriseRegistration(EnterpriseRegistration _enterpriseRegistration) public onlyOwner{
         enterpriseRegistration = _enterpriseRegistration;
@@ -33,7 +33,7 @@ contract ProductRegistration is Ownership{
 
     }
 
-    //销户企业
+    //注销产品
     function removeProduct(string productAddress) public onlyOwner {
 
     }
