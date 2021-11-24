@@ -1,9 +1,9 @@
 pragma solidity ^0.4.25;
 
-import "./Ownership.sol";
+import "./BasicAuth.sol";
 
 
-contract EnterpriseRegistration is Ownership{
+contract EnterpriseRegistration is BasicAuth{
 
     //认证信息
     struct  CertificationInfo{

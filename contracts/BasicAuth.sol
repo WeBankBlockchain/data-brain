@@ -1,7 +1,9 @@
 pragma solidity ^0.4.25;
 
 contract BasicAuth {
-    address private _owner;
+    address public _owner;
+
+    event TransferOwnership(address previous, address now);
 
     constructor() public {
         _owner = msg.sender;
@@ -12,10 +14,7 @@ contract BasicAuth {
         _;
     }
 
-    function setOwner(address owner)
-    public
-    onlyOwner
-    {
+    function setOwner(address owner) public onlyOwner {
         _owner = owner;
     }
 
@@ -27,5 +26,12 @@ contract BasicAuth {
         } else {
             return false;
         }
+    }
+
+    function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0), "Invalid new owner");
+        address previous = owner;
+        _owner = newOwner;
+        emit TransferOwnership(previous, _owner);
     }
 }

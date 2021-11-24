@@ -1,13 +1,12 @@
 pragma solidity ^0.4.25;
 
-import "./Ownership.sol";
+import "./BasicAuth.sol";
 import "./EnterpriseRegistration.sol";
 
-contract ProductRegistration is Ownership{
-
+contract ProductRegistration is BasicAuth {
     EnterpriseRegistration public enterpriseRegistration;
 
-    struct Product{
+    struct Product {
         //产品地址
         address productAddress;
         //机构地址
@@ -22,19 +21,23 @@ contract ProductRegistration is Ownership{
         string contact;
     }
 
-    mapping(address=>Product) private products;
+    mapping(address => Product) private products;
 
-    function setEnterpriseRegistration(EnterpriseRegistration _enterpriseRegistration) public onlyOwner{
+    function setEnterpriseRegistration(
+        EnterpriseRegistration _enterpriseRegistration
+    ) public onlyOwner {
         enterpriseRegistration = _enterpriseRegistration;
     }
 
     //注册产品
-    function registerProduct(string productAddress, string name, string description, uint256 category, string contact) public onlyOwner{
-
-    }
+    function registerProduct(
+        string productAddress,
+        string name,
+        string description,
+        uint256 category,
+        string contact
+    ) public onlyOwner {}
 
     //注销产品
-    function removeProduct(string productAddress) public onlyOwner {
-
-    }
+    function removeProduct(string productAddress) public onlyOwner {}
 }
