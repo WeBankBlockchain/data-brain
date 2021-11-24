@@ -7,10 +7,17 @@ contract EnterpriseRegistration is Ownership{
 
     //认证信息
     struct  CertificationInfo{
+        //认证类型
+        uint8 authType;
+        //证件类型
         uint8 certType;
+        //证件号码
         string certNo;
+        //法人姓名
         string representativeName;
+        //法人证件类型
         uint8 representativeCertType;
+        //法人证件号码
         string representativeCertNo;
         //企业类型
         uint8 type;
@@ -47,7 +54,7 @@ contract EnterpriseRegistration is Ownership{
     }
 
     //上传认证数据
-    function uploadCertInfos(address keyAddress, uint8 certType,string certNo,string representativeName,uint8 representativeCertType,string representativeCertNo) public onlyOwner{
+    function uploadCertInfos(address keyAddress, uint8 authType, uint8 certType,string certNo,string representativeName,uint8 representativeCertType,string representativeCertNo) public onlyOwner{
 
     }
 
