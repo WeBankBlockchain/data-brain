@@ -29,9 +29,17 @@ contract AuthRecordManager {
         uint256[3] timeArray;
     }
 
+    event CreateAuthRecordSuccessEvent(uint256 authRecordId,address receiverId, address providerId, address userId,string schemaId, string purposeId);
+    event RevokeSuccessEvent(uint256 authRecordId);
+    event ChangeAuthStateToFinishSuccessEvent(uint256 authRecordId);
+    event UploadEvidenceSuccessEvent(uint256 authRecordId, string dataHash);
+    event ChangeTransferStateSuccessEvent(uint256 authRecordId, uint8 transferState);
+
     constructor() public {
         _authRecordCount = 1;
     }
+
+
 
     /**
      * 用户提交授权记录，并初始化授权状态为1
@@ -39,7 +47,8 @@ contract AuthRecordManager {
     function createAuthRecord(address receiverId, address providerId, address userId,string schemaId, string purposeId) public returns(uint256) {
         uint256 authRecordId = _authRecordCount;
         _authRecordCount = _authRecordCount + 1;
-        _authRecordMap[authRecordId] = AuthRecord(authRecordId, receiverId, providerId, userId, schemaId, [1,0],"", purposeId,[now,0,0]);
+        _authRecordMap[authRecordId] = AuthRecord(authRecordId, receiverId, providerId, userId, schemaId, [1,0],"", purposeId, [now,0,0]);
+        emit CreateAuthRecordSuccessEvent(authRecordId,receiverId,providerId,userId,schemaId,purposeId);
         return (authRecordId);
     }
 
@@ -51,13 +60,15 @@ contract AuthRecordManager {
         require(msg.sender == authRecord.userId, "AuthRecordManager : account must be userID");
         authRecord.intArray[0] = 3;
         authRecord.timeArray[1] = now;
+        emit RevokeSuccessEvent(authRecordId);
     }
 
     /**
      * 提供方授权完成，上链修改授权状态为完成态
      */
-    function changeAuthState(uint256 authRecordId) public {
+    function changeAuthStateToFinish(uint256 authRecordId) public {
         _authRecordMap[authRecordId].intArray[0] = 2;
+        emit ChangeAuthStateToFinishSuccessEvent(authRecordId);
     }
 
     /**
@@ -67,6 +78,7 @@ contract AuthRecordManager {
         AuthRecord storage authRecord = _authRecordMap[authRecordId];
         authRecord.intArray[1] = 1;
         authRecord.timeArray[2] = now;
+        emit UploadEvidenceSuccessEvent(authRecordId,dataHash);
     }
 
     /**
@@ -74,6 +86,7 @@ contract AuthRecordManager {
      */
     function changeTransferState(uint256 authRecordId, uint8 transferState) public  {
         _authRecordMap[authRecordId].intArray[1] = transferState;
+        emit ChangeTransferStateSuccessEvent(authRecordId,transferState);
     }
 
     /**
