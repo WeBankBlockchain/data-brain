@@ -5,5 +5,5 @@ package com.webank.databrain.common.model;
  * @Description
  * @date 2021/11/26
  */
-public class DataDir {
+public class MetaData {
 }
