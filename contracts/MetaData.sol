@@ -3,7 +3,7 @@ pragma solidity ^0.4.25;
 import "./BasicAuth.sol";
 
 contract MetaData is BasicAuth {
-    address public _productName;
+    bytes32 public _productName;
     string public _schemaID;
     // url
     string public _url;
@@ -34,14 +34,14 @@ contract MetaData is BasicAuth {
         _description = description;
         _dataInfo = dataInfo;
         _types = types;
-        -fee = fee;
+        _fee = fee;
         _owner = msg.sender;
         _metaInfo[0] = 1;
         _metaInfo[1] = 1;
         _time[0] = now;
     }
 
-    function setProductName(address productName) public onlyOwner {
+    function setProductName(bytes32 productName) public onlyOwner {
         _productName = productName;
         _metaInfo[0] = 1 + _metaInfo[0];
         _time[1] = now;
@@ -77,30 +77,30 @@ contract MetaData is BasicAuth {
     }
 
     function getMetaData()
-        public
-        view
-        returns (
-            bytes32,
-            string,
-            string,
-            string,
-            string,
-            uint16[3],
-            uint32,
-            uint8[2],
-            uint256[2]
-        )
+    public
+    view
+    returns (
+        bytes32,
+        string,
+        string,
+        string,
+        string,
+        uint16[3],
+        uint32,
+        uint8[2],
+        uint256[2]
+    )
     {
         return (
-            _productName,
-            _schemaID,
-            _url,
-            _description,
-            _dataInfo,
-            _types,
-            _fee,
-            _metaInfo,
-            _time
+        _productName,
+        _schemaID,
+        _url,
+        _description,
+        _dataInfo,
+        _types,
+        _fee,
+        _metaInfo,
+        _time
         );
     }
 }
