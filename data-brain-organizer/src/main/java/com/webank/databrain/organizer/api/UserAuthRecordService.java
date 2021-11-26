@@ -1,5 +1,7 @@
 package com.webank.databrain.organizer.api;
 
+import com.webank.databrain.organizer.model.AuthRecord;
+
 /**
  * @author wesleywang
  * @Description:
@@ -7,7 +9,7 @@ package com.webank.databrain.organizer.api;
  */
 public interface UserAuthRecordService extends AuthRecordService{
 
-    void createAuthRecord();
+    void createAuthRecord(AuthRecord authRecord);
 
     void revoke(long authRecordId);
 
