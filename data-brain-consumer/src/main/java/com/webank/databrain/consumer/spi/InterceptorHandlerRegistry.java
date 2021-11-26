@@ -9,17 +9,17 @@ import java.util.Set;
  * @Description:
  * @date 2021/11/26
  */
-public interface InterceptorHandlerRegistry<T> {
+public interface InterceptorHandlerRegistry {
 
     /**
      * 获取服务实现的拦截器
      * @return set
      */
-    Set<InterceptorHandler<T>> getInterceptorHandler();
+    Set<InterceptorHandler> getInterceptorHandler();
 
     /**
      * 注册一个拦截器
      */
-    void registerInterceptorHandler(InterceptorHandler<T> handler);
+    void registerInterceptorHandler(InterceptorHandler handler);
 
 }

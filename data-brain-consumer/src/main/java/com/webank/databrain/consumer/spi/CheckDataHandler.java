@@ -7,11 +7,11 @@ import com.webank.databrain.consumer.model.HandleContext;
  * @Description:
  * @date 2021/11/26
  */
-public interface CheckDataHandler<T> {
+public interface CheckDataHandler {
 
     /**
      * 数据校验
      */
-    void checkData(HandleContext<T> context);
+    void checkData(HandleContext context);
 
 }

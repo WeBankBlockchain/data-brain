@@ -5,9 +5,9 @@ package com.webank.databrain.consumer.model;
  * @Description:
  * @date 2021/11/26
  */
-public interface HandleContext<T> {
+public interface HandleContext {
 
-    T getParseData();
+    Object getParseData();
 
     String getDataHash();
 

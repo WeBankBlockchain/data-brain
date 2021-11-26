@@ -7,13 +7,13 @@ import com.webank.databrain.consumer.model.HandleContext;
  * @Description:
  * @date 2021/11/26
  */
-public interface InterceptorHandler<T> {
+public interface InterceptorHandler {
 
     /**
      * 服务实现
      * @param data
      * @param context
      */
-    void interceptorHandle(byte[] data, HandleContext<T> context);
+    void interceptorHandle(byte[] data, HandleContext context);
 
 }
