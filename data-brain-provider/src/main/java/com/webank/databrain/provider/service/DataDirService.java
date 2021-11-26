@@ -1,4 +1,4 @@
-package com.webank.databrain.provider.handler;
+package com.webank.databrain.provider.service;
 
 import com.webank.databrain.common.model.DataDir;
 import com.webank.databrain.provider.config.ProviderConfig;
@@ -11,7 +11,7 @@ import java.io.InputStream;
  * @Description
  * @date 2021/11/26
  */
-public class DataDirHandler {
+public class DataDirService {
 
     /**
      * 加载数据目录
