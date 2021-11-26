@@ -1,45 +1,37 @@
 pragma solidity ^0.4.25;
 
-import "./BasicAuth.sol";
-import "./EnterpriseManager.sol";
+contract BasicAuth {
+    address public _owner;
 
-contract ProductManager is BasicAuth {
+    event TransferOwnership(address previous, address now);
 
-    event RegisterProduct(string externalAddress, string name);
-    event RemoveProduct(string externalAddress);
-
-    struct ProductInfo {
-        //产品地址
-        address externalAddress;
-        //机构地址
-        string ownerId;
-        //产品名称
-        string name;
-        uint8 status;
+    constructor() public {
+        _owner = msg.sender;
     }
 
-    mapping(address => ProductInfo) private products;
-
-    //注册产品
-    function registerProduct(
-        string externalAddress,
-        string name
-    ) public onlyOwner {
-        require(products[externalAddress].status == 0, "already registered");
-        ProductInfo storage p = products[externalAddress];
-        p.externalAddress = externalAddress;
-        p.name = name;
-        p.status = 1;
-        emit RegisterProduct(externalAddress, name);
+    modifier onlyOwner() {
+        require(auth(msg.sender), "Only owner!");
+        _;
     }
 
-    //注销产品
-    function removeProduct(string externalAddress) public onlyOwner {
-        require(products[externalAddress].status == 1, "Not registered");
-        ProductInfo storage p = products[externalAddress];
-        p.externalAddress = address(0);
-        p.name = "";
-        p.status = 0;
-        emit RemoveProduct(externalAddress);
+    function setOwner(address owner) public onlyOwner {
+        _owner = owner;
+    }
+
+    function auth(address src) public view returns (bool) {
+        if (src == address(this)) {
+            return true;
+        } else if (src == _owner) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0), "Invalid new owner");
+        address previous = _owner;
+        _owner = newOwner;
+        emit TransferOwnership(previous, _owner);
     }
 }

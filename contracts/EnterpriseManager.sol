@@ -7,11 +7,11 @@ contract EnterpriseManager is BasicAuth{
     uint8 public constant STATUS_NOT_EXIST = 0;
     uint8 public constant STATUS_REGISTERED = 1;
     uint8 public constant STATUS_AUTHENTICATED = 2;
-    uint8 public constant STATUS_REVOKED = 3;
+    uint8 public constant STATUS_REMOVED = 3;
 
-    event RegisterEnterprise(string id, string name, string phone, string location, string email);
+    event RegisterEnterprise(string id, string name, string contact, string location, string email);
     event AuthenticateEnterprise(string id, bytes32 certHash);
-    event ModifyEnterprise(string id, string name, string phone, string location, string email);
+    event ModifyEnterprise(string id, string name, string contact, string location, string email);
     event RemoveEnterprise(string id);
 
     //企业信息
@@ -33,45 +33,49 @@ contract EnterpriseManager is BasicAuth{
         uint256[] timestamps;
     }
 
-    mapping(string=>Enterprise) private enterprises;
+    mapping(string=>EnterpriseInfo) private enterprises;
 
     function getEnterpriseStatus(string id) public view returns(uint) {
         return enterprises[id].status;
     }
 
     //注册企业数据
-    function registerEnterprise(string id, string name, string phone, string location, string email) public onlyOwner{
+    function registerEnterprise(string id, string name, string contact, string location, string email) public onlyOwner{
         require(enterprises[id].status == STATUS_NOT_EXIST, "Enterprise already existed");
         EnterpriseInfo storage enterprise = enterprises[id];
         enterprise.name = name;
-        enterprise.phone = phone;
+        enterprise.contact = contact;
         enterprise.location = location;
         enterprise.email = email;
         enterprise.status = STATUS_REGISTERED;
-        emit RegisterProduct(id, name, phone, location, email);
+        emit RegisterEnterprise(id, name, contact, location, email);
     }
 
     //认证
     function authenticateEnterpriseCert(string id, bytes32 certHash) public onlyOwner {
         require(enterprises[id].status == STATUS_REGISTERED, "Enterprise not registered");
+        EnterpriseInfo storage enterprise = enterprises[id];
         enterprise.certHash = certHash;
         enterprise.status = STATUS_AUTHENTICATED;
         emit AuthenticateEnterprise(id, certHash);
     }
 
     //修改企业信息
-    function modifyEnterprise(string id, string name, string phone, string location, string email) public onlyOwner {
+    function modifyEnterprise(string id, string name, string contact, string location, string email) public onlyOwner {
         require(enterprises[id].status == STATUS_REGISTERED  || enterprises[id].status == STATUS_AUTHENTICATED , "Enterprise must register");
-        enterprise.certHash = certHash;
-        enterprise.status = STATUS_AUTHENTICATED;
-        emit ModifyEnterprise(id, name, phone, location, email);
+        EnterpriseInfo storage enterprise = enterprises[id];
+        enterprise.name = name;
+        enterprise.contact = contact;
+        enterprise.location = location;
+        enterprise.email = email;
+        emit ModifyEnterprise(id, name, contact, location, email);
     }
 
     //销户企业
     function removeEnterprise(string id) public onlyOwner {
         require(enterprises[id].status == STATUS_REGISTERED  || enterprises[id].status == STATUS_AUTHENTICATED , "Enterprise must register");
-        enterprise.certHash = certHash;
-        enterprise.status = STATUS_AUTHENTICATED;
-        emit RemoveProduct(id);
+        EnterpriseInfo storage enterprise = enterprises[id];
+        enterprise.status = STATUS_REMOVED;
+        emit RemoveEnterprise(id);
     }
 }
