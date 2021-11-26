@@ -7,6 +7,6 @@ package com.webank.databrain.provider.spi.credential;
  */
 public interface UserCredentialAuthenticator {
 
-    boolean isCredentialChecked(Object userInfo);
+    boolean validCredential(Object userInfo);
 
 }

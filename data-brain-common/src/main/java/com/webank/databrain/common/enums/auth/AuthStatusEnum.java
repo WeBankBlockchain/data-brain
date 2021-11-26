@@ -34,4 +34,12 @@ public enum AuthStatusEnum {
     }
 
 
+    public static AuthStatusEnum getEnumByCode(int code){
+        for(AuthStatusEnum e: AuthStatusEnum.values()){
+            if(e.code == code){
+                return e;
+            }
+        }
+        throw new RuntimeException("Invalid AuthStatusEnum code:"+code);
+    }
 }
