@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.service;
 
-import com.webank.databrain.common.model.DataDir;
+import com.webank.databrain.common.model.MetaData;
 import com.webank.databrain.provider.config.ProviderConfig;
 
 import java.io.InputStream;
@@ -11,20 +11,20 @@ import java.io.InputStream;
  * @Description
  * @date 2021/11/26
  */
-public class DataDirService {
+public class MetaDataService {
 
     /**
      * 加载数据目录
      * @param inputStream
      * @return
      */
-    DataDir loadDataDir(InputStream inputStream){return null;}
+    MetaData loadMetaData(InputStream inputStream){return null;}
 
     /**
      * 部署数据目录合约
-     * @param dataDir
+     * @param metaData
      * @param config
      */
-    void uploadDataDir(DataDir dataDir, ProviderConfig config){}
+    void uploadMetaData(MetaData metaData, ProviderConfig config){}
 
 }

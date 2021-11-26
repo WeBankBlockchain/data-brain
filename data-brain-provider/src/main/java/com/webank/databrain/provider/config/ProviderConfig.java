@@ -17,4 +17,5 @@ public class ProviderConfig {
      */
     private String hexPrivateKey;
 
+    
 }
