@@ -16,6 +16,11 @@ public class AuthenticateInfoVO {
     private Object userInfo;
 
     /**
+     * 用户地址
+     */
+    private String userAddress;
+
+    /**
      * 授权记录ID
      */
     private long authRecordId;

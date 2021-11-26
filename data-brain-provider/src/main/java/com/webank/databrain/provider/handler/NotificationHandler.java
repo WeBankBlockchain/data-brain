@@ -10,6 +10,6 @@ import com.webank.databrain.provider.enums.VerifyStatus;
  */
 public class NotificationHandler {
 
-    public void notifyReceiver(String redirectUrl, VerifyStatus verifyStatus){}
+    public void notifyReceiver(String redirectUrl, Object userInfo, Object userAddress){}
 
 }

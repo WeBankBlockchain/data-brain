@@ -5,6 +5,7 @@ import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.handler.AuthenticationHandler;
+import com.webank.databrain.provider.handler.NotificationHandler;
 import com.webank.databrain.provider.model.AuthenticateInfoVO;
 import com.webank.databrain.provider.spi.UserCredentialAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class AuthenticationService {
 
     @Autowired
     private AuthenticationHandler authHandler;
+
+    @Autowired
+    private NotificationHandler notificationHandler;
 
     @Autowired
     private UserCredentialAuthenticator userCredentialAuthenticator;
@@ -43,6 +47,8 @@ public class AuthenticationService {
         }
         //3. 更新认证授权状态
         authHandler.updateAuthenticationStatus(authRecordID, AuthStatusEnum.Authenticated_By_Provider);
+        //4. 通知接收方取数
+        notificationHandler.notifyReceiver(authenticateInfoVO.getRedirectUrl(), authenticateInfoVO.getUserInfo(), authenticateInfoVO.getUserAddress());
     }
 
 }

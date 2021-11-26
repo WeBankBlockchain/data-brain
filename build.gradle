@@ -60,6 +60,12 @@ project(':data-brain-consumer') {
 	}
 }
 
+project(':data-brain-organizer') {
+	dependencies {
+		implementation project(':data-brain-common')
+	}
+}
+
 project(':data-brain-provider') {
 	dependencies {
 		implementation project(':data-brain-common')
