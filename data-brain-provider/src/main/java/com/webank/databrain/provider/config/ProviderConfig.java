@@ -28,4 +28,11 @@ public class ProviderConfig {
      * 用户身份凭证检验实现接口
      */
     private String userCredentialImplClass;
+    private Witness witness;
+
+    @ConfigurationProperties("witness")
+    @Data
+    public static class Witness {
+        private String url;
+    }
 }

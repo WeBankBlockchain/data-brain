@@ -1,4 +1,4 @@
-package com.webank.databrain.provider.spi.credential;
+package com.webank.databrain.provider.spi;
 
 /**
  * @author aaronchu

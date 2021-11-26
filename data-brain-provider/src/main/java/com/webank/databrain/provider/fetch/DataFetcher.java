@@ -1,4 +1,6 @@
-package com.webank.databrain.provider.spi.credential;
+package com.webank.databrain.provider.fetch;
+
+import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
 
 /**
  * @author aaronchu
@@ -7,7 +9,7 @@ package com.webank.databrain.provider.spi.credential;
  */
 public interface DataFetcher {
 
-    byte[] fetchData() throws Exception;
+    byte[] fetchData(String url) throws Exception;
 
-
+    TransferProtocolEnum protocol();
 }

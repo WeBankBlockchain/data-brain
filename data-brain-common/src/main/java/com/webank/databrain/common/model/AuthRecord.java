@@ -1,4 +1,4 @@
-package com.webank.databrain.organizer.model;
+package com.webank.databrain.common.model;
 
 import lombok.Data;
 

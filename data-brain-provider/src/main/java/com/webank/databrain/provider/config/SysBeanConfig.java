@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.config;
 
-import com.webank.databrain.provider.spi.credential.UserCredentialAuthenticator;
+import com.webank.databrain.provider.spi.UserCredentialAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

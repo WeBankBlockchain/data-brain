@@ -1,4 +1,4 @@
-package com.webank.databrain.common.enums;
+package com.webank.databrain.common.enums.auth;
 
 /**
  * 认证状态

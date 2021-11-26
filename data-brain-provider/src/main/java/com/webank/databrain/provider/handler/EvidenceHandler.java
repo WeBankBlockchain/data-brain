@@ -13,10 +13,10 @@ public class EvidenceHandler {
 
     /**
      * 生成数据存证
-     * @param dataInputStream 数据输入流
+     * @param data 数据输入流
      * @return 32字节的摘要
      */
-    byte[] generateEvidence(InputStream dataInputStream){ return null;}
+    public byte[] generateEvidence(byte[] data){ return null;}
 
 
 }

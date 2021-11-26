@@ -5,5 +5,8 @@ package com.webank.databrain.provider.process;
  * @Description
  * @date 2021/11/26
  */
-public interface DataProcessor {
+public interface DataProcessor<TIn, TOut> {
+
+    TOut process(TIn in);
+
 }

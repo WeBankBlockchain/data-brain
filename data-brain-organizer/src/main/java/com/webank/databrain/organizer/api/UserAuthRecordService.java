@@ -1,6 +1,6 @@
 package com.webank.databrain.organizer.api;
 
-import com.webank.databrain.organizer.model.AuthRecord;
+import com.webank.databrain.common.model.AuthRecord;
 
 /**
  * @author wesleywang

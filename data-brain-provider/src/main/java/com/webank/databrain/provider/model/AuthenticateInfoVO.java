@@ -18,7 +18,7 @@ public class AuthenticateInfoVO {
     /**
      * 授权记录ID
      */
-    private String authRecordId;
+    private long authRecordId;
 
     /**
      * 重定向URL

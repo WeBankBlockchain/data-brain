@@ -1,6 +1,8 @@
 package com.webank.databrain.provider.handler;
 
-import com.webank.databrain.common.enums.AuthStatusEnum;
+import com.webank.databrain.common.enums.auth.AuthStatusEnum;
+import com.webank.databrain.common.model.AuthRecord;
+import com.webank.databrain.common.model.MetaData;
 import com.webank.databrain.provider.config.ProviderConfig;
 
 import java.io.InputStream;
@@ -14,25 +16,28 @@ import java.io.InputStream;
 public class AuthenticationHandler {
 
     /**
-     * 验证授权凭证是否已经用户授权
-     * @param authRecordId
-     * @throws Exception
-     */
-    void verifyAuthenticationStatus(String authRecordId) throws Exception{}
-
-    /**
      * 更新认证状态
      * @param authRecordId
      */
-    void updateAuthenticationStatus(String authRecordId, AuthStatusEnum a){}
+    public void updateAuthenticationStatus(long authRecordId, AuthStatusEnum authStatus){}
 
     /**
-     * 上传数据存证，更新存证状态
+     *
      * @param authRecordId
-     * @param dataInputStream
-     * @param providerConfig
-     * @throws Exception
+     * @param evidence
      */
-    void recordData(String authRecordId, InputStream dataInputStream, ProviderConfig providerConfig) throws Exception{}
+    public void recordEvidence(long authRecordId, byte[] evidence){}
 
+    /**
+     *
+     * @param authRecordID
+     * @return
+     */
+    public AuthRecord getAuthRecordById(long authRecordID) {
+        return null;
+    }
+
+    public MetaData getMetadataById(String schemaId) {
+        return null;
+    }
 }

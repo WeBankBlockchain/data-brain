@@ -25,4 +25,8 @@ public class CommonResponse {
     public static CommonResponse success(){
         return new CommonResponse(OK, null, null);
     }
+
+    public static CommonResponse success(Object data){
+        return new CommonResponse(OK, null, data);
+    }
 }

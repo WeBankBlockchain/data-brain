@@ -1,5 +1,8 @@
 package com.webank.databrain.provider.process;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 /**
@@ -7,10 +10,12 @@ import java.util.List;
  * @Description
  * @date 2021/11/26
  */
+@Component
 public class DataProcessRegistry
 {
     private List<DataProcessor> dataProcessorList;
 
+    @Autowired
     public DataProcessRegistry(List<DataProcessor> dataProcessorList) {
         this.dataProcessorList = dataProcessorList;
     }

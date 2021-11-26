@@ -1,4 +1,4 @@
-package com.webank.databrain.common.enums;
+package com.webank.databrain.common.enums.auth;
 
 import lombok.Getter;
 
