@@ -10,8 +10,24 @@ import lombok.Data;
 @Data
 public class AuthenticateInfoVO {
 
-    private String userId;
+    /**
+     * 用户信息，可以是身份证号等
+     */
+    private Object userInfo;
 
+    /**
+     * 授权记录ID
+     */
     private String authRecordId;
+
+    /**
+     * 重定向URL
+     */
+    private String redirectUrl;
+
+    /**
+     * 时间戳
+     */
+    private long ts;
 
 }
