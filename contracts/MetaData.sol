@@ -2,7 +2,7 @@ pragma solidity ^0.4.25;
 
 import "./BasicAuth.sol";
 
-contract DataDir is BasicAuth {
+contract MetaData is BasicAuth {
     address public _productName;
     string public _schemaID;
     // url
@@ -58,16 +58,6 @@ contract DataDir is BasicAuth {
         _time[1] = now;
     }
 
-    struct ProductInfo {
-        //产品地址
-        address externalAddress;
-        //机构地址
-        string ownerId;
-        //产品名称
-        string name;
-        uint8 status;
-    }
-
     function setDataInfo(string dataInfo) public onlyOwner {
         _dataInfo = dataInfo;
         _metaInfo[0] = 1 + _metaInfo[0];
@@ -86,7 +76,7 @@ contract DataDir is BasicAuth {
         _time[1] = now;
     }
 
-    function getDataDir()
+    function getMetaData()
         public
         view
         returns (
