@@ -1,27 +1,37 @@
 pragma solidity ^0.4.25;
 
-import "./BasicAuth.sol";
-import "./EnterpriseManager.sol";
+contract BasicAuth {
+    address public _owner;
 
-contract ProductManager is BasicAuth {
+    event TransferOwnership(address previous, address now);
 
-    struct Product {
-        //产品地址
-        address externalAddress;
-        //机构地址
-        string ownerId;
-        //产品名称
-        string name;
+    constructor() public {
+        _owner = msg.sender;
     }
 
-    mapping(address => Product) private products;
+    modifier onlyOwner() {
+        require(auth(msg.sender), "Only owner!");
+        _;
+    }
 
-    //注册产品
-    function registerProduct(
-        string externalAddress,
-        string name
-    ) public onlyOwner {}
+    function setOwner(address owner) public onlyOwner {
+        _owner = owner;
+    }
 
-    //注销产品
-    function removeProduct(string productAddress) public onlyOwner {}
+    function auth(address src) public view returns (bool) {
+        if (src == address(this)) {
+            return true;
+        } else if (src == _owner) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function transferOwnership(address newOwner) public onlyOwner {
+        require(newOwner != address(0), "Invalid new owner");
+        address previous = _owner;
+        _owner = newOwner;
+        emit TransferOwnership(previous, _owner);
+    }
 }
