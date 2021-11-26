@@ -1,6 +1,6 @@
 pragma solidity ^0.4.25;
 
-import "BasicAuth.sol";
+import "./BasicAuth.sol";
 
 contract DataDir is BasicAuth {
     address public _productName;
@@ -58,10 +58,14 @@ contract DataDir is BasicAuth {
         _time[1] = now;
     }
 
-    function setDescription(string description) public onlyOwner {
-        _description = description;
-        _metaInfo[0] = 1 + _metaInfo[0];
-        _time[1] = now;
+    struct ProductInfo {
+        //产品地址
+        address externalAddress;
+        //机构地址
+        string ownerId;
+        //产品名称
+        string name;
+        uint8 status;
     }
 
     function setDataInfo(string dataInfo) public onlyOwner {

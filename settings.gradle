@@ -3,3 +3,5 @@ rootProject.name = 'data-brain'
 include 'data-brain-organizer'
 include 'data-brain-provider'
 include 'data-brain-consumer'
+include 'data-brain-common'
+
