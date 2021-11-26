@@ -9,7 +9,6 @@ public interface UserAuthRecordService extends AuthRecordService{
 
     void createAuthRecord();
 
-    void revoke();
+    void revoke(long authRecordId);
 
-    void changeTransferState();
 }

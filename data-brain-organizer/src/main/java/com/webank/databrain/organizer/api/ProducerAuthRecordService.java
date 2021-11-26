@@ -7,7 +7,7 @@ package com.webank.databrain.organizer.api;
  */
 public interface ProducerAuthRecordService extends AuthRecordService{
 
-    void uploadEvidence();
+    void uploadEvidence(long authRecordId, String dataHash);
 
-    void changeTransferState();
+    void changeAuthStateToFinish(long authRecordId);
 }
