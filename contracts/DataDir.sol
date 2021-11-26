@@ -3,39 +3,45 @@ pragma solidity ^0.4.25;
 import "BasicAuth.sol";
 
 contract DataDir is BasicAuth {
-    bytes32 public _productName;
+    address public _productName;
     string public _schemaID;
-    //0-version;1-status;
-    // status: 0-closed, 1-open, 2-deprecated
-    uint8[2] public _metaInfo;
-    // url | format | transfer protocol
-    string public _transferInfo;
+    // url
+    string public _url;
     // tags & content
     string public _description;
-    //0-busi type;1-data level;2-data type
+    //0-busi type;1-data level;2-data type;3-format;4-transfer protocol;
+    string public _dataInfo;
     uint16[3] public _types;
+    uint32 public _fee;
+    //0-version;1-status;
+    // status: 0-closed, 1-open
+    uint32[2] public _metaInfo;
     // 0-createTime; 1-updateTime;
     uint256[2] public _time;
 
     constructor(
         bytes32 productName,
         string schemaID,
-        string transferInfo,
+        string url,
         string description,
-        uint16[3] types
+        string dataInfo,
+        uint16[3] types,
+        uint32 fee
     ) {
         _productName = productName;
         _schemaID = schemaID;
-        _transferInfo = transferInfo;
+        _url = url;
         _description = description;
+        _dataInfo = dataInfo;
         _types = types;
+        -fee = fee;
         _owner = msg.sender;
         _metaInfo[0] = 1;
         _metaInfo[1] = 1;
         _time[0] = now;
     }
 
-    function setProductName(string productName) public onlyOwner {
+    function setProductName(address productName) public onlyOwner {
         _productName = productName;
         _metaInfo[0] = 1 + _metaInfo[0];
         _time[1] = now;
@@ -46,14 +52,26 @@ contract DataDir is BasicAuth {
         _time[1] = now;
     }
 
-    function setTransferInfo(string transferInfo) public onlyOwner {
-        _transferInfo = transferInfo;
+    function setUrl(string url) public onlyOwner {
+        _url = url;
         _metaInfo[0] = 1 + _metaInfo[0];
         _time[1] = now;
     }
 
     function setDescription(string description) public onlyOwner {
         _description = description;
+        _metaInfo[0] = 1 + _metaInfo[0];
+        _time[1] = now;
+    }
+
+    function setDataInfo(string dataInfo) public onlyOwner {
+        _dataInfo = dataInfo;
+        _metaInfo[0] = 1 + _metaInfo[0];
+        _time[1] = now;
+    }
+
+    function setFee(uint32 fee) public onlyOwner {
+        _fee = fee;
         _metaInfo[0] = 1 + _metaInfo[0];
         _time[1] = now;
     }
@@ -70,20 +88,24 @@ contract DataDir is BasicAuth {
         returns (
             bytes32,
             string,
-            uint8[2],
+            string,
             string,
             string,
             uint16[3],
+            uint32,
+            uint8[2],
             uint256[2]
         )
     {
         return (
             _productName,
             _schemaID,
-            _metaInfo,
-            _transferInfo,
+            _url,
             _description,
+            _dataInfo,
             _types,
+            _fee,
+            _metaInfo,
             _time
         );
     }
