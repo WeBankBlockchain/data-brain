@@ -6,9 +6,9 @@
       <GradleProjectSettings>
         <option name="delegatedBuild" value="true" />
         <option name="testRunner" value="GRADLE" />
-        <option name="distributionType" value="LOCAL" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="D:/gradle-6.8.3" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../ProgramData/chocolatey/lib/gradle/tools/gradle-7.2" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -18,7 +18,6 @@
             <option value="$PROJECT_DIR$/data-brain-provider" />
           </set>
         </option>
-        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

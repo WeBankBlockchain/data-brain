@@ -40,17 +40,17 @@ subprojects {
 		implementation 'org.springframework.boot:spring-boot-starter'
 		implementation('org.springframework.boot:spring-boot-starter-web')
 		implementation('org.springframework.boot:spring-boot-configuration-processor')
-		compile('org.fisco-bcos.java-sdk:fisco-bcos-java-sdk:2.8.0') {
-			exclude group: 'org.slf4j'
-		}
+		//compile('org.fisco-bcos.java-sdk:fisco-bcos-java-sdk:2.8.0') {
+			//exclude group: 'org.slf4j'
+		//}
 
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 		compileOnly 'org.projectlombok:lombok:1.18.10'
 		annotationProcessor 'org.projectlombok:lombok:1.18.10'
 
-		test {
-			useJUnitPlatform()
-		}
+		//test {
+			//useJUnitPlatform()
+		//}
 	}
 }
 
