@@ -19,7 +19,7 @@ public interface ConsumerService {
     /**
      * 拦截器处理
      */
-    void interceptorHandle(byte[] data, InterceptorHandlerRegistry registry);
+    void interceptorHandle(byte[] data);
 
     /**
      * 数据校验

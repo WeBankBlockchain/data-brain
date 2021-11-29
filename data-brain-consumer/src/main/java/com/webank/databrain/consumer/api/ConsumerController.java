@@ -15,8 +15,17 @@ public class ConsumerController {
     /**
      * 授权回调
      */
-    @PostMapping("/")
-    public void callback(AuthRecordInfo authRecordInfo){
+    @PostMapping("organizer/callback")
+    public void callbackByOrganizer(AuthRecordInfo authRecordInfo){
+
+    }
+
+
+    /**
+     * 授权回调
+     */
+    @PostMapping("provider/callback")
+    public void callbackByProvider(AuthRecordInfo authRecordInfo){
 
     }
 

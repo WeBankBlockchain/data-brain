@@ -1,10 +1,17 @@
 package com.webank.databrain.consumer.config;
 
+import lombok.Data;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+
 /**
  * @author wesleywang
  * @Description
  * @date 2021/11/26
  */
+@Configuration
+@ConfigurationProperties("provider")
+@Data
 public class ConsumerConfig {
 
     /**

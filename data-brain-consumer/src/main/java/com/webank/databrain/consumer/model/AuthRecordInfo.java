@@ -18,6 +18,4 @@ public class AuthRecordInfo{
 
     private boolean state;
 
-    private int code;
-
 }

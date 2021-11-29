@@ -10,7 +10,7 @@ contract AuthRecordManager {
         //授权记录ID
         uint256 authRecordId;
         //接收方地址
-        address receiverId;
+        address consumerId;
         //提供方地址
         address providerId;
         //用户地址
@@ -29,7 +29,7 @@ contract AuthRecordManager {
         uint256[3] timeArray;
     }
 
-    event CreateAuthRecordSuccessEvent(uint256 authRecordId,address receiverId, address providerId, address userId,string schemaId, string purposeId);
+    event CreateAuthRecordSuccessEvent(uint256 authRecordId,address consumerId, address providerId, address userId,string schemaId, string purposeId);
     event RevokeSuccessEvent(uint256 authRecordId);
     event ChangeAuthStateToFinishSuccessEvent(uint256 authRecordId);
     event UploadEvidenceSuccessEvent(uint256 authRecordId, string dataHash);
@@ -44,11 +44,11 @@ contract AuthRecordManager {
     /**
      * 用户提交授权记录，并初始化授权状态为1
      */
-    function createAuthRecord(address receiverId, address providerId, address userId,string schemaId, string purposeId) public returns(uint256) {
+    function createAuthRecord(address consumerId, address providerId, address userId,string schemaId, string purposeId) public returns(uint256) {
         uint256 authRecordId = _authRecordCount;
         _authRecordCount = _authRecordCount + 1;
-        _authRecordMap[authRecordId] = AuthRecord(authRecordId, receiverId, providerId, userId, schemaId, [1,0],"", purposeId, [now,0,0]);
-        emit CreateAuthRecordSuccessEvent(authRecordId,receiverId,providerId,userId,schemaId,purposeId);
+        _authRecordMap[authRecordId] = AuthRecord(authRecordId, consumerId, providerId, userId, schemaId, [1,0],"", purposeId, [now,0,0]);
+        emit CreateAuthRecordSuccessEvent(authRecordId,consumerId,providerId,userId,schemaId,purposeId);
         return (authRecordId);
     }
 
@@ -94,6 +94,6 @@ contract AuthRecordManager {
      */
     function getAuthRecordById(uint256 authRecordId) public view returns(uint256, address, address, address, string, uint8[2], string, string,uint256[3]) {
          AuthRecord storage authRecord = _authRecordMap[authRecordId];
-         return (authRecord.authRecordId,authRecord.receiverId,authRecord.providerId,authRecord.userId,authRecord.schemaId,authRecord.intArray,authRecord.dataHash,authRecord.purposeId,authRecord.timeArray);
+         return (authRecord.authRecordId,authRecord.consumerId,authRecord.providerId,authRecord.userId,authRecord.schemaId,authRecord.intArray,authRecord.dataHash,authRecord.purposeId,authRecord.timeArray);
     }
 }
