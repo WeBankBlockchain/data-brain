@@ -13,4 +13,6 @@ public interface HandleContext {
 
     String getAuthRecordId();
 
+    byte[] getOriginData();
+
 }

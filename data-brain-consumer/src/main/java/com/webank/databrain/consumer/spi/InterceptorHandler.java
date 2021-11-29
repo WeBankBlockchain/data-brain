@@ -11,9 +11,8 @@ public interface InterceptorHandler {
 
     /**
      * 服务实现
-     * @param data
      * @param context
      */
-    void interceptorHandle(byte[] data, HandleContext context);
+    void interceptorHandle(HandleContext context);
 
 }

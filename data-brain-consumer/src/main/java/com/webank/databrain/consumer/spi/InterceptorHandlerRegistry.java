@@ -1,8 +1,6 @@
 package com.webank.databrain.consumer.spi;
 
-import com.webank.databrain.consumer.model.HandleContext;
-
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author wesleywang
@@ -15,7 +13,7 @@ public interface InterceptorHandlerRegistry {
      * 获取服务实现的拦截器
      * @return set
      */
-    Set<InterceptorHandler> getInterceptorHandler();
+    List<InterceptorHandler> getInterceptorHandler();
 
     /**
      * 注册一个拦截器
