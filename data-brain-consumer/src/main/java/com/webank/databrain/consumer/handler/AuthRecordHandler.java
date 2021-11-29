@@ -2,7 +2,6 @@ package com.webank.databrain.consumer.handler;
 
 
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.MetaData;
 
 /**
  * 进行授权存证的状态更新
@@ -26,13 +25,4 @@ public class AuthRecordHandler {
         return null;
     }
 
-
-    /**
-     * 获取元数据
-     * @param schemaId
-     * @return
-     */
-    public MetaData getMetadataById(String schemaId) {
-        return null;
-    }
 }

@@ -11,11 +11,9 @@ import lombok.Data;
 public class AuthRecordInfo{
 
     private long authRecordId;
-    /**
-     * 请求来源
-     */
-    private int originType;
 
     private boolean state;
+
+    private long sequence;
 
 }
