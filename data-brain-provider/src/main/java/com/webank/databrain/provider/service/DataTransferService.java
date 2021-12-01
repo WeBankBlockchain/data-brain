@@ -2,7 +2,7 @@ package com.webank.databrain.provider.service;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.Schema;
+import com.webank.databrain.common.model.DataSchema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.handler.EvidenceHandler;
@@ -49,7 +49,7 @@ public class DataTransferService {
         if(schemaId == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_ID_NULL, authRecordId);
         }
-        Schema schema = this.authHandler.getMetadataById(schemaId);
+        DataSchema schema = this.authHandler.getMetadataById(schemaId);
         if(schema == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_NOT_FOUND, authRecordId);
         }

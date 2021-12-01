@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
  */
 @NoArgsConstructor
 @Data
-//TODO:改名 ，加上定价字段
-public class Schema {
+public class DataSchema {
     /**
      * 产品名称
      */
@@ -79,6 +78,8 @@ public class Schema {
      * 传输协议
      */
     private TransferProtocolEnum transferProtocol;
+
+    private int price;
 
     /**
      * 创建时间

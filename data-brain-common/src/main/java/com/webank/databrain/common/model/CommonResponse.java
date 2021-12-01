@@ -20,13 +20,8 @@ public class CommonResponse {
 
     private String message;
 
-    private Object data;
-
     public static CommonResponse success(){
-        return new CommonResponse(OK, null, null);
+        return new CommonResponse(OK, null);
     }
 
-    public static CommonResponse success(Object data){
-        return new CommonResponse(OK, null, data);
-    }
 }

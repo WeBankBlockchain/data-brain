@@ -7,10 +7,10 @@ import com.webank.databrain.common.model.AuthRecord;
  * @Description:
  * @date 2021/11/26
  */
-public interface UserAuthRecordService extends AuthRecordService{
+public interface UserAuthRecordApi {
 
-    void createAuthRecord(AuthRecord authRecord);
+    public void createAuthRecord(AuthRecord authRecord);
 
-    void revoke(long authRecordId);
+    public void revoke(long authRecordId);
 
 }

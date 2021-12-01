@@ -2,7 +2,7 @@ package com.webank.databrain.common.manager;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.Schema;
+import com.webank.databrain.common.model.DataSchema;
 
 /**
  * 对AuthRecord进行增删改查
@@ -34,7 +34,7 @@ public class AuthRecordManager {
         return null;
     }
 
-    public Schema getMetadataById(String schemaId) {
+    public DataSchema getMetadataById(String schemaId) {
         return null;
     }
 
