@@ -2,7 +2,7 @@ pragma solidity ^0.4.25;
 
 import "./BasicAuth.sol";
 
-contract MetaData is BasicAuth {
+contract Schema is BasicAuth {
     bytes32 public _productName;
     string public _schemaID;
     // url
@@ -12,7 +12,7 @@ contract MetaData is BasicAuth {
     //0-busi type;1-data level;2-data type;3-format;4-transfer protocol;
     string public _dataInfo;
     uint16[3] public _types;
-    uint32 public _fee;
+    uint32 public _price;
     //0-version;1-status;
     // status: 0-closed, 1-open
     uint32[2] public _metaInfo;
@@ -26,7 +26,7 @@ contract MetaData is BasicAuth {
         string description,
         string dataInfo,
         uint16[3] types,
-        uint32 fee
+        uint32 price
     ) {
         _productName = productName;
         _schemaID = schemaID;
@@ -34,7 +34,7 @@ contract MetaData is BasicAuth {
         _description = description;
         _dataInfo = dataInfo;
         _types = types;
-        _fee = fee;
+        _price = price;
         _owner = msg.sender;
         _metaInfo[0] = 1;
         _metaInfo[1] = 1;
@@ -64,8 +64,8 @@ contract MetaData is BasicAuth {
         _time[1] = now;
     }
 
-    function setFee(uint32 fee) public onlyOwner {
-        _fee = fee;
+    function setPrice(uint32 price) public onlyOwner {
+        _price = price;
         _metaInfo[0] = 1 + _metaInfo[0];
         _time[1] = now;
     }
@@ -98,7 +98,7 @@ contract MetaData is BasicAuth {
         _description,
         _dataInfo,
         _types,
-        _fee,
+        _price,
         _metaInfo,
         _time
         );

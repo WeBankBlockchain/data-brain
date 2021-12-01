@@ -1,7 +1,7 @@
 package com.webank.databrain.provider.handler;
 
 import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
-import com.webank.databrain.common.model.Schema;
+import com.webank.databrain.common.model.DataSchema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.fetch.DataFetcher;
@@ -28,7 +28,7 @@ public class FetchHandler {
         }
     }
 
-    public byte[] fetch(Schema schema){
+    public byte[] fetch(DataSchema schema){
         TransferProtocolEnum transferProtocol = schema.getTransferProtocol();
         DataFetcher dataFetcher = fetcherMap.get(transferProtocol);
         if(dataFetcher == null){

@@ -1,6 +1,6 @@
 package com.webank.databrain.consumer.handler;
 
-import com.webank.databrain.common.model.Schema;
+import com.webank.databrain.common.model.DataSchema;
 
 /**
  * @author wesleywang
@@ -14,7 +14,7 @@ public class MetaDataHandler {
      * @param schemaId
      * @return
      */
-    public Schema getMetadataById(String schemaId) {
+    public DataSchema getMetadataById(String schemaId) {
         return null;
     }
 }
