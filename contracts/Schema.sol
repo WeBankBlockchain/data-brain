@@ -76,7 +76,7 @@ contract Schema is BasicAuth {
         _time[1] = now;
     }
 
-    function getMetaData()
+    function getSchema()
     public
     view
     returns (
