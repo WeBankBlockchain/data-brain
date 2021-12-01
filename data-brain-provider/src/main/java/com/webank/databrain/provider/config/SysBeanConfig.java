@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.config;
 
-import com.webank.databrain.provider.spi.UserCredentialAuthenticator;
+import com.webank.databrain.provider.authenticator.CredentialAuthenticator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,10 +24,10 @@ public class SysBeanConfig {
      * @throws Exception
      */
     @Bean
-    public UserCredentialAuthenticator loadUserCredentialHandler() throws Exception{
+    public CredentialAuthenticator loadUserCredentialHandler() throws Exception{
         Class clazz = Class.forName(this.providerConfig.getUserCredentialImplClass());
         Constructor constructor = clazz.getConstructor();
-        return (UserCredentialAuthenticator) constructor.newInstance();
+        return (CredentialAuthenticator) constructor.newInstance();
     }
 
 }

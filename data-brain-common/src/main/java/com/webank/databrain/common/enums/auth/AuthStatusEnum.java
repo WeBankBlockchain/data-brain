@@ -15,7 +15,7 @@ public enum AuthStatusEnum {
     /**
      * 组织方已认证
      */
-    Authenticated_By_Organizer(1),
+    Authenticated_By_Witness(1),
 
     /**
      * 提供方已认证
