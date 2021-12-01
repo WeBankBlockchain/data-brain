@@ -2,7 +2,7 @@ package com.webank.databrain.provider.service;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.MetaData;
+import com.webank.databrain.common.model.Schema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.handler.AuthenticationHandler;
@@ -50,11 +50,11 @@ public class DataTransferService {
         if(schemaId == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_ID_NULL, authRecordId);
         }
-        MetaData metaData = this.authHandler.getMetadataById(schemaId);
-        if(metaData == null){
+        Schema schema = this.authHandler.getMetadataById(schemaId);
+        if(schema == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_NOT_FOUND, authRecordId);
         }
-        byte[] data = this.fetchHandler.fetch(metaData);
+        byte[] data = this.fetchHandler.fetch(schema);
         //3. Data post process
         Object handledData = (byte[])dataProcessRegistry.process(data);
         //4. Upload evidence

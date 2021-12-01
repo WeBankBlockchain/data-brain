@@ -1,7 +1,5 @@
 package com.webank.databrain.provider.handler;
 
-import com.webank.databrain.provider.enums.VerifyStatus;
-
 /**
  * 通知接收方
  * @author aaronchu

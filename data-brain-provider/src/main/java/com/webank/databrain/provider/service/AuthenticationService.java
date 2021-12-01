@@ -25,6 +25,9 @@ public class AuthenticationService {
     @Autowired
     private NotificationHandler notificationHandler;
 
+    /**
+     * TODO:还是改成基于URL
+     */
     @Autowired
     private UserCredentialAuthenticator userCredentialAuthenticator;
 
@@ -36,6 +39,7 @@ public class AuthenticationService {
         }
 
         // 2. 检查用户是否进行过授权
+
         long authRecordID = authenticateInfoVO.getAuthRecordId();
         AuthRecord authRecord = authHandler.getAuthRecordById(authRecordID);
         if(authRecord == null){
@@ -48,6 +52,7 @@ public class AuthenticationService {
         //3. 更新认证授权状态
         authHandler.updateAuthenticationStatus(authRecordID, AuthStatusEnum.Authenticated_By_Provider);
         //4. 通知接收方取数
+        //TODO: 需要一个随机码，具体参考OAUTH/JWT
         notificationHandler.notifyReceiver(authenticateInfoVO.getRedirectUrl(), authenticateInfoVO.getUserInfo(), authenticateInfoVO.getUserAddress());
     }
 

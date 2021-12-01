@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
  */
 @NoArgsConstructor
 @Data
-public class MetaData {
+//TODO:改名 ，加上定价字段
+public class Schema {
     /**
      * 产品名称
      */

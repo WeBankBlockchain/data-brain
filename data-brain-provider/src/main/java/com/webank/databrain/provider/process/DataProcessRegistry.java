@@ -10,6 +10,7 @@ import java.util.List;
  * @Description
  * @date 2021/11/26
  */
+//TODO: Registry->Chain
 @Component
 public class DataProcessRegistry
 {
@@ -20,8 +21,9 @@ public class DataProcessRegistry
         this.dataProcessorList = dataProcessorList;
     }
 
-    public synchronized void registerProcessor(DataProcessor dataProcessor) {
+    public synchronized DataProcessRegistry registerProcessor(DataProcessor dataProcessor) {
         this.dataProcessorList.add(dataProcessor);
+        return this;
     }
 
     public synchronized Object process(Object data){

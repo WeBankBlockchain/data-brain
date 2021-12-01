@@ -2,10 +2,7 @@ package com.webank.databrain.provider.handler;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.MetaData;
-import com.webank.databrain.provider.config.ProviderConfig;
-
-import java.io.InputStream;
+import com.webank.databrain.common.model.Schema;
 
 /**
  * 进行授权存证的状态更新
@@ -37,7 +34,7 @@ public class AuthenticationHandler {
         return null;
     }
 
-    public MetaData getMetadataById(String schemaId) {
+    public Schema getMetadataById(String schemaId) {
         return null;
     }
 }

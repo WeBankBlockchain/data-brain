@@ -1,5 +1,6 @@
 pragma solidity ^0.4.25;
 
+
 contract AuthRecordManager {
 
     mapping(uint256 => AuthRecord) private _authRecordMap;
@@ -8,7 +9,7 @@ contract AuthRecordManager {
 
     struct AuthRecord {
         //授权记录ID
-        uint256 authRecordId;
+        uint256 authRecordId;//TODO:授权记录ID=机构ID+产品ID+自增码
         //接收方地址
         address consumerId;
         //提供方地址

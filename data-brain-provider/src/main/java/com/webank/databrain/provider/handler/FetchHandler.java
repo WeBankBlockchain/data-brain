@@ -1,12 +1,11 @@
 package com.webank.databrain.provider.handler;
 
 import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
-import com.webank.databrain.common.model.MetaData;
+import com.webank.databrain.common.model.Schema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.fetch.DataFetcher;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,14 +28,14 @@ public class FetchHandler {
         }
     }
 
-    public byte[] fetch(MetaData metaData){
-        TransferProtocolEnum transferProtocol = metaData.getTransferProtocol();
+    public byte[] fetch(Schema schema){
+        TransferProtocolEnum transferProtocol = schema.getTransferProtocol();
         DataFetcher dataFetcher = fetcherMap.get(transferProtocol);
         if(dataFetcher == null){
             throw new ProviderException(ProviderErrorCode.TRANSFER_PROTOCOL_NOT_SUPPORT, transferProtocol);
         }
         try{
-            return dataFetcher.fetchData(metaData.getUrl());
+            return dataFetcher.fetchData(schema.getUrl());
         }
         catch (Exception ex){
             throw new ProviderException(ex, ProviderErrorCode.TRANSFER_ERROR);

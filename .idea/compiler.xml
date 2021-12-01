@@ -6,13 +6,22 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$PROJECT_DIR$/../../../../tool/gradle-6.5/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.10/625fc0055674dff70dbc76efa36d0f2c89b04a24/lombok-1.18.10.jar" />
+          <entry name="D:/gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.10/625fc0055674dff70dbc76efa36d0f2c89b04a24/lombok-1.18.10.jar" />
         </processorPath>
-        <module name="data-brain-organizer_main" />
         <module name="data-brain-provider_main" />
-        <module name="data-brain-consumer_main" />
-        <module name="data-brain-common_main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-brain.data-brain-common.main" target="1.8" />
+      <module name="data-brain.data-brain-common.test" target="1.8" />
+      <module name="data-brain.data-brain-consumer.main" target="1.8" />
+      <module name="data-brain.data-brain-consumer.test" target="1.8" />
+      <module name="data-brain.data-brain-organizer.main" target="1.8" />
+      <module name="data-brain.data-brain-organizer.test" target="1.8" />
+      <module name="data-brain.data-brain-provider.main" target="1.8" />
+      <module name="data-brain.data-brain-provider.test" target="1.8" />
+      <module name="data-brain.main" target="1.8" />
+      <module name="data-brain.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
