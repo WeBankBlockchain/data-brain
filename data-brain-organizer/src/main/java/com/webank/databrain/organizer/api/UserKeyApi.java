@@ -7,4 +7,6 @@ public interface UserKeyApi {
     public <R extends AccountResponse> R createPrivateKey(User user);
 
     public  <R extends AccountResponse> R getAccountInfo(User user);
+
+    public String sign(String userId, String tx);
 }
