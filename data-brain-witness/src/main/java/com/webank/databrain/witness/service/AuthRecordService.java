@@ -1,11 +1,9 @@
-package com.webank.databrain.organizer.service;
+package com.webank.databrain.witness.service;
 
 import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.common.model.CommonDataResponse;
 import com.webank.databrain.common.model.CommonResponse;
-import com.webank.databrain.organizer.blockchain.AuthRecordManager;
-import org.fisco.bcos.sdk.transaction.model.dto.CallResponse;
-import org.fisco.bcos.sdk.transaction.model.dto.TransactionResponse;
+import com.webank.databrain.witness.blockchain.AuthRecordManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class AuthRecordService {

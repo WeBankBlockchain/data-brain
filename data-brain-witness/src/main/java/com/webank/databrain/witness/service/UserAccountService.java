@@ -1,9 +1,9 @@
-package com.webank.databrain.organizer.service;
+package com.webank.databrain.witness.service;
 
 import com.webank.databrain.common.model.CommonResponse;
 import com.webank.databrain.common.model.User;
-import com.webank.databrain.organizer.api.UserAuthApi;
-import com.webank.databrain.organizer.api.UserKeyApi;
+import com.webank.databrain.witness.api.UserAuthApi;
+import com.webank.databrain.witness.api.UserKeyApi;
 import com.webank.databrain.common.model.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 

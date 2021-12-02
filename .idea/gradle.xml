@@ -14,8 +14,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/data-brain-common" />
             <option value="$PROJECT_DIR$/data-brain-consumer" />
-            <option value="$PROJECT_DIR$/data-brain-organizer" />
             <option value="$PROJECT_DIR$/data-brain-provider" />
+            <option value="$PROJECT_DIR$/data-brain-witness" />
           </set>
         </option>
       </GradleProjectSettings>

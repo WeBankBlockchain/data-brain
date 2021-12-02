@@ -1,4 +1,4 @@
-package com.webank.databrain.organizer.api;
+package com.webank.databrain.witness.api;
 
 import com.webank.databrain.common.model.User;
 import com.webank.databrain.common.model.AccountResponse;

@@ -1,4 +1,4 @@
-package com.webank.databrain.organizer.blockchain;
+package com.webank.databrain.witness.blockchain;
 
 import com.webank.databrain.common.model.Enterprise;
 import org.fisco.bcos.sdk.transaction.model.dto.TransactionResponse;

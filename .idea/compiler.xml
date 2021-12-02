@@ -10,9 +10,13 @@
         </processorPath>
         <module name="data-brain.data-brain-consumer.main" />
         <module name="data-brain.data-brain-common.main" />
-        <module name="data-brain.data-brain-organizer.main" />
+        <module name="data-brain.data-brain-witness.main" />
         <module name="data-brain.data-brain-provider.main" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="data-brain.data-brain-organizer.main" target="1.8" />
+      <module name="data-brain.data-brain-organizer.test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

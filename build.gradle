@@ -62,7 +62,7 @@ project(':data-brain-consumer') {
 	}
 }
 
-project(':data-brain-organizer') {
+project(':data-brain-witness') {
 	dependencies {
 		implementation project(':data-brain-common')
 	}
