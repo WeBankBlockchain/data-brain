@@ -15,13 +15,13 @@ public class AuthRecordHandler {
      * 更新传输状态
      * @param authRecordId
      */
-    public void changeTransferState(long authRecordId, int transferState){}
+    public void changeTransferState(String authRecordId, int transferState){}
     /**
      * 获取授权记录
      * @param authRecordID
      * @return
      */
-    public AuthRecord getAuthRecordById(long authRecordID) {
+    public AuthRecord getAuthRecordById(String authRecordId) {
         return null;
     }
 

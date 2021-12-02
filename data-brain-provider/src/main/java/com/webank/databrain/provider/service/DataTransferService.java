@@ -1,13 +1,19 @@
 package com.webank.databrain.provider.service;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
+import com.webank.databrain.common.manager.AuthRecordManager;
 import com.webank.databrain.common.model.AuthRecord;
+import com.webank.databrain.common.model.AuthToken;
 import com.webank.databrain.common.model.DataSchema;
+import com.webank.databrain.common.processor.DataProcessChain;
+import com.webank.databrain.common.utils.JsonUtils;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.handler.EvidenceHandler;
 import com.webank.databrain.provider.handler.FetchHandler;
-import com.webank.databrain.provider.process.DataProcessRegistry;
+import com.webank.databrain.provider.model.FetchRequestVO;
+import com.webank.databrain.provider.process.ProviderProcessors;
+import com.webank.databrain.provider.utils.DataProcessUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -18,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class DataTransferService {
 
     @Autowired
-    private AuthenticationHandler authHandler;
+    private AuthRecordManager authManager;
 
     @Autowired
     private EvidenceHandler evidenceHandler;
@@ -27,16 +33,19 @@ public class DataTransferService {
     private FetchHandler fetchHandler;
 
     @Autowired
-    private DataProcessRegistry dataProcessRegistry;
+    private ProviderProcessors processors;
+
 
     /**
      * 下载数据
-     * @param authRecordId 授权记录ID
      * @throws Exception
      */
-    public Object fetchData(long authRecordId) throws Exception{
+    public Object fetchData(FetchRequestVO fetchRequest) throws Exception{
+        String token = fetchRequest.getToken();
+        AuthToken authToken = JsonUtils.fromJson(token, AuthToken.class);
+        String authRecordId = authToken.getAuthRecordId();
         //1. 验证用户已经授权过
-        AuthRecord authRecord = authHandler.getAuthRecordById(authRecordId);
+        AuthRecord authRecord = authManager.getAuthRecordById(authRecordId);
         if(authRecord == null){
             throw new ProviderException(ProviderErrorCode.AUTH_RECORD_NOT_FOUND, authRecordId);
         }
@@ -49,16 +58,17 @@ public class DataTransferService {
         if(schemaId == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_ID_NULL, authRecordId);
         }
-        DataSchema schema = this.authHandler.getMetadataById(schemaId);
+        DataSchema schema = this.authManager.getMetadataById(schemaId);
         if(schema == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_NOT_FOUND, authRecordId);
         }
         byte[] data = this.fetchHandler.fetch(schema);
         //3. Data post process
-        Object handledData = (byte[])dataProcessRegistry.process(data);
+        DataProcessChain dataProcessChain = DataProcessUtils.fromHints(processors, fetchRequest.getProcessHints());
+        Object handledData = dataProcessChain.process(data);
         //4. Upload evidence
         byte[] evidence = this.evidenceHandler.generateEvidence(data);
-        this.authHandler.recordEvidence(authRecordId, evidence);
+        this.authManager.recordEvidence(authRecordId, evidence);
         return handledData;
     }
 

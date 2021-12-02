@@ -1,5 +1,7 @@
 package com.webank.databrain.provider.handler;
 
+import com.webank.databrain.common.model.AuthToken;
+
 /**
  * 通知接收方
  * @author aaronchu
@@ -8,6 +10,12 @@ package com.webank.databrain.provider.handler;
  */
 public class NotificationHandler {
 
-    public void notifyReceiver(String redirectUrl, Object userInfo, Object userAddress){}
+    /**
+     *
+     * @param redirectUrl
+     * @param token
+     */
+    public void notifyReceiver(String redirectUrl, AuthToken token){
+    }
 
 }

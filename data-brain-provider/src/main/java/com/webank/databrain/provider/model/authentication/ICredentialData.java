@@ -1,4 +1,4 @@
-package com.webank.databrain.common.model.authenticate;
+package com.webank.databrain.provider.model.authentication;
 
 /**
  * Marker interface

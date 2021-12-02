@@ -1,6 +1,6 @@
-package com.webank.databrain.common.model.authenticate.impl;
+package com.webank.databrain.provider.model.authentication.impl;
 
-import com.webank.databrain.common.model.authenticate.ICredentialData;
+import com.webank.databrain.provider.model.authentication.ICredentialData;
 import lombok.Data;
 
 /**

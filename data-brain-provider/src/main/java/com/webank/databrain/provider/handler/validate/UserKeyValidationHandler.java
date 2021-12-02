@@ -1,7 +1,6 @@
 package com.webank.databrain.provider.handler.validate;
 
-import com.webank.databrain.common.model.authenticate.AuthorizeInfo;
-import com.webank.databrain.common.model.authenticate.CredentialInfo;
+import com.webank.databrain.provider.model.authentication.CredentialInfo;
 
 /**
  * 核验用户实名信息和地址是否能对的上
@@ -11,8 +10,12 @@ import com.webank.databrain.common.model.authenticate.CredentialInfo;
  */
 public class UserKeyValidationHandler {
 
-
-    public void validateUserKeys(CredentialInfo credentialInfo, AuthorizeInfo authorizeInfo){
+    /**
+     * 向组织方验证公钥地址
+     * @param credentialInfo
+     * @param address
+     */
+    public void validateUserSignature(CredentialInfo credentialInfo, String address){
 
     }
 

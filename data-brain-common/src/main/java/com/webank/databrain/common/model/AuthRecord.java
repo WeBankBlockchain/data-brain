@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class AuthRecord {
 
-    private long authRecordId;
+    private String authRecordId;
 
     private String receiverId;
 

@@ -1,4 +1,4 @@
-package com.webank.databrain.common.model.authenticate;
+package com.webank.databrain.provider.model.authentication;
 
 import lombok.Data;
 
@@ -14,7 +14,7 @@ public class AuthorizeInfo {
     /**
      * 授权记录ID
      */
-    private long authRecordId;
+    private String authRecordId;
 
     /**
      * 用户公钥地址

@@ -16,21 +16,21 @@ public class AuthRecordManager {
      * 更新认证状态
      * @param authRecordId
      */
-    public void updateAuthenticationStatus(long authRecordId, AuthStatusEnum authStatus){}
+    public void updateAuthenticationStatus(String authRecordId, AuthStatusEnum authStatus){}
 
     /**
      *
      * @param authRecordId
      * @param evidence
      */
-    public void recordEvidence(long authRecordId, byte[] evidence){}
+    public void recordEvidence(String authRecordId, byte[] evidence){}
 
     /**
      *
      * @param authRecordID
      * @return
      */
-    public AuthRecord getAuthRecordById(long authRecordID) {
+    public AuthRecord getAuthRecordById(String authRecordID) {
         return null;
     }
 

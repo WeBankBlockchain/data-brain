@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.process.impl;
 
-import com.webank.databrain.provider.process.DataProcessor;
+import com.webank.databrain.common.processor.DataProcessor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,8 +10,10 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SerializeProcessor implements DataProcessor<byte[], byte[]> {
+
     @Override
     public byte[] process(byte[] bytes) {
         return new byte[0];
     }
+
 }

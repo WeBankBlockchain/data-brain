@@ -11,6 +11,6 @@ public interface UserAuthRecordApi {
 
     public void createAuthRecord(AuthRecord authRecord);
 
-    public void revoke(long authRecordId);
+    public void revoke(String authRecordId);
 
 }

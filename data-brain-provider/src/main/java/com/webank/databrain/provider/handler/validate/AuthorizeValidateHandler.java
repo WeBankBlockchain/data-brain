@@ -3,7 +3,7 @@ package com.webank.databrain.provider.handler.validate;
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.manager.AuthRecordManager;
 import com.webank.databrain.common.model.AuthRecord;
-import com.webank.databrain.common.model.authenticate.AuthorizeInfo;
+import com.webank.databrain.provider.model.authentication.AuthorizeInfo;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,14 @@ public class AuthorizeValidateHandler {
      * 核验用户授权
      */
     public void validateAuthorizeInfo(AuthorizeInfo authorizeInfo){
-        long authRecordID = authorizeInfo.getAuthRecordId();
-        AuthRecord authRecord = authRecordManager.getAuthRecordById(authRecordID);
+        String authRecordId = authorizeInfo.getAuthRecordId();
+        AuthRecord authRecord = authRecordManager.getAuthRecordById(authRecordId);
         if(authRecord == null){
-            throw new ProviderException(ProviderErrorCode.AUTH_RECORD_NOT_FOUND, authRecordID);
+            throw new ProviderException(ProviderErrorCode.AUTH_RECORD_NOT_FOUND, authRecordId);
         }
         AuthStatusEnum authStatusEnum = AuthStatusEnum.getEnumByCode(authRecord.getAuthState());
         if(authStatusEnum != AuthStatusEnum.Authenticated_By_Witness){
-            throw new ProviderException(ProviderErrorCode.USER_NOT_AUTH, authRecordID);
+            throw new ProviderException(ProviderErrorCode.USER_NOT_AUTH, authRecordId);
         }
     }
 }
