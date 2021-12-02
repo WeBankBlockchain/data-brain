@@ -1,16 +1,16 @@
-package com.webank.databrain.provider.handler;
+package com.webank.databrain.common.manager;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.common.model.DataSchema;
 
 /**
- * 进行授权存证的状态更新
+ * 对AuthRecord进行增删改查
  * @author aaronchu
  * @Description
- * @date 2021/11/26
+ * @date 2021/12/01
  */
-public class AuthenticationHandler {
+public class AuthRecordManager {
 
     /**
      * 更新认证状态
@@ -37,4 +37,5 @@ public class AuthenticationHandler {
     public DataSchema getMetadataById(String schemaId) {
         return null;
     }
+
 }

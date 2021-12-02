@@ -1,5 +1,7 @@
 package com.webank.databrain.provider.model;
 
+import com.webank.databrain.common.model.authenticate.AuthorizeInfo;
+import com.webank.databrain.common.model.authenticate.CredentialInfo;
 import lombok.Data;
 
 /**
@@ -11,19 +13,14 @@ import lombok.Data;
 public class AuthenticateInfoVO {
 
     /**
-     * 用户信息，可以是身份证号等
+     * 用户身份验证信息
      */
-    private Object userInfo;
+    private CredentialInfo credentialInfo;
 
     /**
-     * 用户地址
+     * 用户授权信息
      */
-    private String userAddress;
-
-    /**
-     * 授权记录ID
-     */
-    private long authRecordId;
+    private AuthorizeInfo authorizeInfo;
 
     /**
      * 重定向URL

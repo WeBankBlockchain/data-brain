@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 实现双层核验：身份核验 + 授权核验
  * @author aaronchu
  * @Description
  * @date 2021/11/26

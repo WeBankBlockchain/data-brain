@@ -5,7 +5,6 @@ import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.common.model.DataSchema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
-import com.webank.databrain.provider.handler.AuthenticationHandler;
 import com.webank.databrain.provider.handler.EvidenceHandler;
 import com.webank.databrain.provider.handler.FetchHandler;
 import com.webank.databrain.provider.process.DataProcessRegistry;
