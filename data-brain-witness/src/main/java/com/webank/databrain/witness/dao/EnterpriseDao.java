@@ -1,4 +1,4 @@
-package com.webank.databrain.organizer.dao;
+package com.webank.databrain.witness.dao;
 
 import com.webank.databrain.common.model.Enterprise;
 

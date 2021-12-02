@@ -1,4 +1,4 @@
-package com.webank.databrain.organizer;
+package com.webank.databrain.witness;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
