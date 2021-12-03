@@ -16,6 +16,11 @@ public class AuthToken {
     private String authRecordId;
 
     /**
+     * 分发人（即提供方地址）
+     */
+    private String address;
+
+    /**
      * 随机码
      */
     private String randomCode;

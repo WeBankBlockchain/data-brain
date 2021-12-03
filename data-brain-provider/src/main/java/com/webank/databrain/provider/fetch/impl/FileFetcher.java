@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.fetch.impl;
 
-import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
+import com.webank.databrain.common.enums.schema.TransferProtocolEnum;
 import com.webank.databrain.provider.fetch.DataFetcher;
 import org.springframework.stereotype.Component;
 

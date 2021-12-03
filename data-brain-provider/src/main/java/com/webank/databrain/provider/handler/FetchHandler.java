@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.handler;
 
-import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
+import com.webank.databrain.common.enums.schema.TransferProtocolEnum;
 import com.webank.databrain.common.model.DataSchema;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;

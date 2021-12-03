@@ -1,6 +1,6 @@
 package com.webank.databrain.common.model;
 
-import com.webank.databrain.common.enums.metadata.*;
+import com.webank.databrain.common.enums.schema.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

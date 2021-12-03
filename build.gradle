@@ -56,7 +56,7 @@ subprojects {
 	}
 }
 
-project(':data-brain-consumer') {
+project(':data-brain-receiver') {
 	dependencies {
 		implementation project(':data-brain-common')
 	}

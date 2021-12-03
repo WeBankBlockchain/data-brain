@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.fetch;
 
-import com.webank.databrain.common.enums.metadata.TransferProtocolEnum;
+import com.webank.databrain.common.enums.schema.TransferProtocolEnum;
 
 /**
  * @author aaronchu
