@@ -1,4 +1,4 @@
-package com.webank.databrain.common.manager;
+package com.webank.databrain.provider.manager;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
@@ -19,22 +19,18 @@ public class AuthRecordManager {
     public void updateAuthenticationStatus(String authRecordId, AuthStatusEnum authStatus){}
 
     /**
-     *
+     * 存证信息上链
      * @param authRecordId
      * @param evidence
      */
     public void recordEvidence(String authRecordId, byte[] evidence){}
 
     /**
-     *
+     * 获取授权凭证完整信息
      * @param authRecordID
      * @return
      */
     public AuthRecord getAuthRecordById(String authRecordID) {
-        return null;
-    }
-
-    public DataSchema getMetadataById(String schemaId) {
         return null;
     }
 

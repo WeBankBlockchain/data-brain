@@ -12,12 +12,6 @@ import java.util.Map;
  */
 @Data
 public class CredentialInfo {
-
-    /**
-     * 认证模式，具体和CredentialAuthMode保持一致
-     */
-    private int credentialAuthMode;
-
     /**
      * 认证数据。后续将会转换成ICredentialData
      */

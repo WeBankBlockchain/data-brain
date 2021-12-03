@@ -1,7 +1,7 @@
 package com.webank.databrain.provider.handler.validate;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
-import com.webank.databrain.common.manager.AuthRecordManager;
+import com.webank.databrain.provider.manager.AuthRecordManager;
 import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.provider.model.authentication.AuthorizeInfo;
 import com.webank.databrain.provider.error.ProviderErrorCode;

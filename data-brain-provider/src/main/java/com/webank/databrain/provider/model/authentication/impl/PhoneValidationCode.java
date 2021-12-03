@@ -9,10 +9,15 @@ import lombok.Data;
  * @date 2021/12/01
  */
 @Data
-public class PhoneValidationCode implements ICredentialData {
+public class
+PhoneValidationCode implements ICredentialData {
 
     private String phone;
 
     private String password;
 
+    @Override
+    public String getId() {
+        return phone;
+    }
 }

@@ -20,5 +20,7 @@ public class AuthToken {
      */
     private String randomCode;
 
-
+    public String toString() {
+        return null;
+    }
 }

@@ -9,10 +9,14 @@ import lombok.Data;
  * @date 2021/12/01
  */
 @Data
-public class UsernamePwd implements ICredentialData {
+public class UserIdPwd implements ICredentialData {
 
-    private String username;
+    private String userId;
 
     private String password;
 
+    @Override
+    public String getId() {
+        return userId;
+    }
 }
