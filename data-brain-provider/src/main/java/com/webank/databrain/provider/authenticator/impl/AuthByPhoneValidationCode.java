@@ -1,7 +1,7 @@
 package com.webank.databrain.provider.authenticator.impl;
 
 import com.webank.databrain.common.enums.auth.UserCredentialModeEnum;
-import com.webank.databrain.common.model.authenticate.impl.PhoneValidationCode;
+import com.webank.databrain.provider.model.authentication.impl.PhoneValidationCode;
 import com.webank.databrain.provider.authenticator.CredentialAuthenticator;
 import com.webank.databrain.provider.model.CredentialValidationResult;
 

@@ -1,8 +1,10 @@
 package com.webank.databrain.provider.handler.validate;
 
 import com.webank.databrain.common.enums.auth.UserCredentialModeEnum;
-import com.webank.databrain.common.model.authenticate.ICredentialData;
-import com.webank.databrain.common.model.authenticate.CredentialInfo;
+import com.webank.databrain.provider.config.ProviderConfig;
+import com.webank.databrain.provider.model.authentication.AddressValidationData;
+import com.webank.databrain.provider.model.authentication.ICredentialData;
+import com.webank.databrain.provider.model.authentication.CredentialInfo;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
 import com.webank.databrain.provider.authenticator.CredentialAuthenticator;
@@ -23,15 +25,39 @@ import java.util.Map;
 @Component
 public class CredentialValidateHandler {
 
+    private ProviderConfig providerConfig;
+
     private Map<UserCredentialModeEnum, CredentialAuthenticator> authenticators;
 
     @Autowired
-    public CredentialValidateHandler(List<CredentialAuthenticator> authenticatorList) {
+    public CredentialValidateHandler(List<CredentialAuthenticator> authenticatorList, ProviderConfig providerConfig) {
         this.authenticators = new HashMap<>();
         for(CredentialAuthenticator authenticator: authenticatorList){
             authenticators.put(authenticator.supportedMode(), authenticator);
         }
+        this.providerConfig = providerConfig;
     }
+
+
+    /**
+     * 向组织方验证公钥地址
+     */
+    public void validateUserSignature(CredentialInfo credentials, String address){
+        //1. Get authenticator by authenticate mode
+        UserCredentialModeEnum credentialMode = UserCredentialModeEnum.getEnumByCode(providerConfig.getCredentialAuthMode());
+        CredentialAuthenticator authenticator = this.authenticators.get(credentialMode);
+
+        //2. Convert input model
+        ICredentialData userInfo = authenticator.convert(credentials.getCredentialInfo());
+
+        //3. Do validation
+        this.validateUserSignature(userInfo.getId(), address);
+    }
+
+    public void validateUserSignature(String userId, String address){
+
+    }
+
 
     /**
      * 核验用户身份
@@ -40,11 +66,8 @@ public class CredentialValidateHandler {
      */
     public CredentialValidationResult validateUserCredential(CredentialInfo credentials) {
         //1. Get authenticator by authenticate mode
-        UserCredentialModeEnum credentialMode = UserCredentialModeEnum.getEnumByCode(credentials.getCredentialAuthMode());
+        UserCredentialModeEnum credentialMode = UserCredentialModeEnum.getEnumByCode(providerConfig.getCredentialAuthMode());
         CredentialAuthenticator authenticator = this.authenticators.get(credentialMode);
-        if(authenticator == null){
-            throw new ProviderException(ProviderErrorCode.INVALID_CREDENTIAL_MODE, credentials.getCredentialAuthMode());
-        }
 
         //2. Convert input model
         ICredentialData userInfo = authenticator.convert(credentials.getCredentialInfo());

@@ -1,7 +1,7 @@
 package com.webank.databrain.provider.authenticator;
 
 import com.webank.databrain.common.enums.auth.UserCredentialModeEnum;
-import com.webank.databrain.common.model.authenticate.ICredentialData;
+import com.webank.databrain.provider.model.authentication.ICredentialData;
 import com.webank.databrain.provider.model.CredentialValidationResult;
 
 import java.util.Map;

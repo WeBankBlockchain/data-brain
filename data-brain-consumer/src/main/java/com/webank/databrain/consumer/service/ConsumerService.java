@@ -29,7 +29,7 @@ public interface ConsumerService {
     /**
      * 数据确认上链
      */
-    void confirmData(long authRecordId, int transferState);
+    void confirmData(String authRecordId, int transferState);
 
 
 }

@@ -5,4 +5,11 @@ import lombok.Data;
 @Data
 public  class CommonDataResponse<T> extends CommonResponse{
     private T data;
+
+    public static <TData> CommonDataResponse success(TData data){
+        CommonDataResponse commonDataResponse = new CommonDataResponse();
+        commonDataResponse.setCode(CommonResponse.OK);
+        commonDataResponse.setData(data);
+        return commonDataResponse;
+    }
 }

@@ -1,27 +1,19 @@
-package com.webank.databrain.provider.process;
+package com.webank.databrain.common.processor;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author aaronchu
- * @Description
- * @date 2021/11/26
- */
-//TODO: Registry->Chain
-@Component
-public class DataProcessRegistry
+public class DataProcessChain
 {
     private List<DataProcessor> dataProcessorList;
 
-    @Autowired
-    public DataProcessRegistry(List<DataProcessor> dataProcessorList) {
-        this.dataProcessorList = dataProcessorList;
+    public DataProcessChain() {
+        this.dataProcessorList = new ArrayList<>();
     }
 
-    public synchronized DataProcessRegistry registerProcessor(DataProcessor dataProcessor) {
+    public synchronized DataProcessChain registerProcessor(DataProcessor dataProcessor) {
         this.dataProcessorList.add(dataProcessor);
         return this;
     }

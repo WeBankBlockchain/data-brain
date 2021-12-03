@@ -46,7 +46,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public void confirmData(long authRecordId, int transferState) {
+    public void confirmData(String authRecordId, int transferState) {
 
     }
 }

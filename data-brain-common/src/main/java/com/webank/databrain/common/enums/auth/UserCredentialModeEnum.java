@@ -10,9 +10,7 @@ public enum UserCredentialModeEnum {
 
     UsernamePwd(0),
 
-    PhoneValidationCode(1),
-
-    Unknown(-1);
+    PhoneValidationCode(1);
 
     private int code;
 
@@ -26,6 +24,6 @@ public enum UserCredentialModeEnum {
                 return e;
             }
         }
-        return Unknown;
+        throw new RuntimeException("Invalid credential mode :"+code);
     }
 }

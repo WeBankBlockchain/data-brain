@@ -28,6 +28,15 @@ public class ProviderConfig {
      * 用户身份凭证检验实现接口
      */
     private String userCredentialImplClass;
+
+    /**
+     * 认证模式，具体和CredentialAuthMode保持一致
+     */
+    private int credentialAuthMode;
+
+    /**
+     * 组织方地址信息
+     */
     private Witness witness;
 
     @ConfigurationProperties("witness")

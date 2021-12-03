@@ -1,7 +1,7 @@
 package com.webank.databrain.provider.authenticator.impl;
 
 import com.webank.databrain.common.enums.auth.UserCredentialModeEnum;
-import com.webank.databrain.common.model.authenticate.impl.UsernamePwd;
+import com.webank.databrain.provider.model.authentication.impl.UserIdPwd;
 import com.webank.databrain.provider.config.ProviderConfig;
 import com.webank.databrain.provider.authenticator.CredentialAuthenticator;
 import com.webank.databrain.provider.model.CredentialValidationResult;
@@ -16,19 +16,19 @@ import java.util.Map;
  * @date 2021/12/01
  */
 @Component
-public class AuthByPwd implements CredentialAuthenticator<UsernamePwd> {
+public class AuthByPwd implements CredentialAuthenticator<UserIdPwd> {
 
     @Autowired
     private ProviderConfig providerConfig;
 
     @Override
-    public UsernamePwd convert(Map<String, Object> userCredentialInfo) {
-        UsernamePwd usernamePwd = new UsernamePwd();
-        usernamePwd.setUsername(userCredentialInfo.get);
+    public UserIdPwd convert(Map<String, Object> userCredentialInfo) {
+        UserIdPwd userIdPwd = new UserIdPwd();
+        userIdPwd.setUserId(userCredentialInfo.get);
     }
 
     @Override
-    public CredentialValidationResult validCredential(UsernamePwd userInfo) {
+    public CredentialValidationResult validCredential(UserIdPwd userInfo) {
         return null;
     }
 

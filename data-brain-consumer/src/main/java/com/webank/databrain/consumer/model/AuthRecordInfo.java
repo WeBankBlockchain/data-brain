@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class AuthRecordInfo{
 
-    private long authRecordId;
+    private String authRecordId;
 
     private boolean state;
 

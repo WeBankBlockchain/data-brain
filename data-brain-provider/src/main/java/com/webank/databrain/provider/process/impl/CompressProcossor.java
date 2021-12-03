@@ -1,6 +1,6 @@
 package com.webank.databrain.provider.process.impl;
 
-import com.webank.databrain.provider.process.DataProcessor;
+import com.webank.databrain.common.processor.DataProcessor;
 import org.springframework.stereotype.Component;
 
 /**
