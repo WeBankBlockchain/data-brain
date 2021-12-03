@@ -11,7 +11,6 @@ import com.webank.databrain.common.model.DataSchema;
  * @date 2021/12/01
  */
 public class AuthRecordManager {
-
     /**
      * 更新认证状态
      * @param authRecordId
