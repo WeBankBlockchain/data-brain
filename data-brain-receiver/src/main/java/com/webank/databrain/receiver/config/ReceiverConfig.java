@@ -39,7 +39,7 @@ public class ReceiverConfig {
     private String providerConfigPath = "providers.json";
 
     /**
-     * 数据处理顺序安排
+     * 数据入站处理配置。例如包含A,B,C，则包含取数后对数据先执行A，再执行B，最后执行C
      */
-    private List<Integer> dataProcessHints;
+    private String inBoundProcessors;
 }

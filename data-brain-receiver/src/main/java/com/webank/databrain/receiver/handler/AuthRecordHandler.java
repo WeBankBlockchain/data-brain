@@ -1,6 +1,7 @@
 package com.webank.databrain.receiver.handler;
 
 
+import com.webank.databrain.common.enums.auth.TransferStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
 
 /**
@@ -15,10 +16,10 @@ public class AuthRecordHandler {
      * 更新传输状态
      * @param authRecordId
      */
-    public void changeTransferState(String authRecordId, int transferState){}
+    public void changeTransferState(String authRecordId, TransferStatusEnum transferState){}
     /**
      * 获取授权记录
-     * @param authRecordID
+     * @param authRecordId
      * @return
      */
     public AuthRecord getAuthRecordById(String authRecordId) {

@@ -1,6 +1,9 @@
 package com.webank.databrain.receiver.api;
 
 import com.webank.databrain.receiver.model.AuthRecordInfo;
+import com.webank.databrain.receiver.model.RedirectRequestVO;
+import com.webank.databrain.receiver.service.ReceiverService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController("api/consumer")
 public class CallbackController {
+    @Autowired
+    private ReceiverService receiverService;
+
 
     /**
      * 授权回调
@@ -26,9 +32,8 @@ public class CallbackController {
      * 授权回调
      */
     @PostMapping("provider/callback")
-    public void callbackByProvider(@RequestBody AuthRecordInfo authRecordInfo){
-
+    public void callbackByProvider(@RequestBody RedirectRequestVO redirectRequestVO){
+        receiverService.onProviderCallback(redirectRequestVO);
     }
-
 
 }

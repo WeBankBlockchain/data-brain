@@ -1,11 +1,13 @@
 package com.webank.databrain.provider.service;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
+import com.webank.databrain.common.enums.auth.TransferStatusEnum;
+import com.webank.databrain.common.processor.DataProcessPipeline;
+import com.webank.databrain.provider.handler.DataSchemaHandler;
 import com.webank.databrain.provider.manager.AuthRecordManager;
 import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.common.model.AuthToken;
 import com.webank.databrain.common.model.DataSchema;
-import com.webank.databrain.common.processor.DataProcessChain;
 import com.webank.databrain.common.utils.JsonUtils;
 import com.webank.databrain.provider.error.ProviderErrorCode;
 import com.webank.databrain.provider.error.ProviderException;
@@ -16,6 +18,8 @@ import com.webank.databrain.provider.process.ProviderProcessors;
 import com.webank.databrain.provider.utils.DataProcessUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author aaronchu
  * @Description
@@ -25,6 +29,9 @@ public class DataTransferService {
 
     @Autowired
     private AuthRecordManager authManager;
+
+    @Autowired
+    private DataSchemaHandler dataSchemaHandler;
 
     @Autowired
     private EvidenceHandler evidenceHandler;
@@ -58,17 +65,21 @@ public class DataTransferService {
         if(schemaId == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_ID_NULL, authRecordId);
         }
-        DataSchema schema = this.authManager.getMetadataById(schemaId);
+        DataSchema schema = this.dataSchemaHandler.getSchemaById(schemaId);
         if(schema == null){
             throw new ProviderException(ProviderErrorCode.SCHEMA_NOT_FOUND, authRecordId);
         }
         byte[] data = this.fetchHandler.fetch(schema);
-        //3. Data post process
-        DataProcessChain dataProcessChain = DataProcessUtils.fromHints(processors, fetchRequest.getProcessHints());
-        Object handledData = dataProcessChain.process(data);
-        //4. Upload evidence
+        //3. Upload evidence
         byte[] evidence = this.evidenceHandler.generateEvidence(data);
         this.authManager.recordEvidence(authRecordId, evidence);
+        //4. Data post process
+        List<String> inBoundProcessors = fetchRequest.getInBoundProcessors();
+        List<String> outBoundProcessors = DataProcessUtils.toOutBoundProcessors(inBoundProcessors);
+        DataProcessPipeline dataProcessPipeline = DataProcessUtils.toPipeline(processors, outBoundProcessors);
+        Object handledData = dataProcessPipeline.process(data);
+        //5. Modify status
+        this.authManager.changeTransferStatus(authRecordId, TransferStatusEnum.Sent);
         return handledData;
     }
 

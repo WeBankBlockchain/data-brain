@@ -1,4 +1,4 @@
-package com.webank.databrain.receiver.spi;
+package com.webank.databrain.receiver.handler;
 
 import com.webank.databrain.receiver.model.HandleContext;
 
@@ -12,6 +12,6 @@ public interface CheckDataHandler {
     /**
      * 数据校验
      */
-    void checkData(HandleContext context);
+    void checkData(byte[] rawData, String authRecordId);
 
 }

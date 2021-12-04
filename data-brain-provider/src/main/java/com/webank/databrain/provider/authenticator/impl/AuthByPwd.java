@@ -1,5 +1,6 @@
 package com.webank.databrain.provider.authenticator.impl;
 
+import com.webank.databrain.common.constants.UserCredentialConstants;
 import com.webank.databrain.common.enums.auth.UserCredentialModeEnum;
 import com.webank.databrain.provider.model.authentication.impl.UserIdPwd;
 import com.webank.databrain.provider.config.ProviderConfig;
@@ -24,7 +25,9 @@ public class AuthByPwd implements CredentialAuthenticator<UserIdPwd> {
     @Override
     public UserIdPwd convert(Map<String, Object> userCredentialInfo) {
         UserIdPwd userIdPwd = new UserIdPwd();
-        userIdPwd.setUserId(userCredentialInfo.get);
+        userIdPwd.setUserId(userCredentialInfo.get(UserCredentialConstants.USERNAME).toString());
+        userIdPwd.setPassword(userCredentialInfo.get(UserCredentialConstants.PASSWORD).toString());
+        return userIdPwd;
     }
 
     @Override

@@ -21,6 +21,11 @@ public class AuthToken {
     private String address;
 
     /**
+     * 用于防止CSRF攻击
+     */
+    private long state;
+
+    /**
      * 随机码
      */
     private String randomCode;

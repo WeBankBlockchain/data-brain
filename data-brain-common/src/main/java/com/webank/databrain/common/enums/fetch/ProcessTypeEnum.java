@@ -2,6 +2,8 @@ package com.webank.databrain.common.enums.fetch;
 
 import lombok.Getter;
 
+import java.util.Objects;
+
 /**
  * 数据处理类型
  * @author aaronchu
@@ -11,21 +13,21 @@ import lombok.Getter;
 @Getter
 public enum ProcessTypeEnum {
 
-    Encryption(1),
+    Encryption("encrypt"),
 
-    Encoding(2),
+    Encoding("encode"),
 
-    Compression(3);
+    Compression("compress");
 
-    private int code;
+    private String id;
 
-    ProcessTypeEnum(int code) {
-        this.code  = code;
+    ProcessTypeEnum(String id) {
+        this.id = id;
     }
 
-    public static ProcessTypeEnum getEnumByCode(int code){
+    public static ProcessTypeEnum getEnumById(String id){
         for(ProcessTypeEnum e: ProcessTypeEnum.values()){
-            if(e.code == code){
+            if(Objects.equals(e.id, id)){
                 return e;
             }
         }

@@ -1,19 +1,17 @@
 package com.webank.databrain.common.processor;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataProcessChain
+public class DataProcessPipeline
 {
     private List<DataProcessor> dataProcessorList;
 
-    public DataProcessChain() {
+    public DataProcessPipeline() {
         this.dataProcessorList = new ArrayList<>();
     }
 
-    public synchronized DataProcessChain registerProcessor(DataProcessor dataProcessor) {
+    public synchronized DataProcessPipeline registerProcessor(DataProcessor dataProcessor) {
         this.dataProcessorList.add(dataProcessor);
         return this;
     }

@@ -7,6 +7,6 @@ package com.webank.databrain.receiver.handler;
  */
 public class SignatureHandler {
 
-
+    public void checkSignature(String msg, String address, String signature) {}
 
 }

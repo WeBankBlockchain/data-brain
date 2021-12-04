@@ -1,6 +1,7 @@
 package com.webank.databrain.provider.manager;
 
 import com.webank.databrain.common.enums.auth.AuthStatusEnum;
+import com.webank.databrain.common.enums.auth.TransferStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
 import com.webank.databrain.common.model.DataSchema;
 
@@ -33,4 +34,7 @@ public class AuthRecordManager {
         return null;
     }
 
+    public void changeTransferStatus(String authRecordId, TransferStatusEnum statusEnum) {
+
+    }
 }
