@@ -40,7 +40,6 @@ public class AuthenticationService {
     private AuthTokenManager authTokenManager;
 
     public void authenticate(AuthenticateRequestVO authenticateRequestVO){
-        CredentialInfo credentialInfo = authenticateRequestVO.getCredentialInfo();
         AuthorizeInfo authorizeInfo = authenticateRequestVO.getAuthorizeInfo();
         // 1. 核验用户身份
         CredentialValidationResult credentialValidationResult = this.credentialValidateHandler.validateUserCredential(authenticateRequestVO);
