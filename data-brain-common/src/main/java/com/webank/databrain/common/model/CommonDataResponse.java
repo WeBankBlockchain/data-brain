@@ -1,8 +1,10 @@
 package com.webank.databrain.common.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public  class CommonDataResponse<T> extends CommonResponse{
     private T data;
 

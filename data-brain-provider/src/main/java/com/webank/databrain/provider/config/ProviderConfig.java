@@ -1,5 +1,6 @@
 package com.webank.databrain.provider.config;
 
+import com.webank.databrain.common.enums.crypto.CryptoAlgorithmEnum;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -38,6 +39,11 @@ public class ProviderConfig {
      * 组织方地址信息
      */
     private Witness witness;
+
+    /**
+     * 签名算法
+     */
+    private CryptoAlgorithmEnum signatureAlg;
 
     @ConfigurationProperties("witness")
     @Data

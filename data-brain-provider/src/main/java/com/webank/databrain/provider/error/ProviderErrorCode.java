@@ -16,6 +16,7 @@ public enum  ProviderErrorCode {
     SCHEMA_NOT_FOUND(30002,"schema not found in auth record"),
     TRANSFER_PROTOCOL_NOT_SUPPORT(40001,"transfer protocol not support"),
     TRANSFER_ERROR(40002,"transfer error"),
+    SIGNATURE_ERROR(50003, "signature not valid"),
     INNER_ERROR(-1,"Inner Exception");
 
     private long code;

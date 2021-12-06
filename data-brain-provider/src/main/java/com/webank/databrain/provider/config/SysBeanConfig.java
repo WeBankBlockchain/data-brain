@@ -1,6 +1,9 @@
 package com.webank.databrain.provider.config;
 
+import com.webank.databrain.common.enums.crypto.CryptoAlgorithmEnum;
 import com.webank.databrain.provider.authenticator.CredentialAuthenticator;
+import com.webank.databrain.provider.validator.SignatureValidator;
+import com.webank.databrain.provider.validator.impl.ECDSASignatureValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +21,11 @@ public class SysBeanConfig {
     @Autowired
     private ProviderConfig providerConfig;
 
-    /**
-     * 通过类似SPI方式，让用户自己决定怎么检验身份
-     * @return
-     * @throws Exception
-     */
     @Bean
-    public CredentialAuthenticator loadUserCredentialHandler() throws Exception{
-        Class clazz = Class.forName(this.providerConfig.getUserCredentialImplClass());
-        Constructor constructor = clazz.getConstructor();
-        return (CredentialAuthenticator) constructor.newInstance();
+    public SignatureValidator signatureValidator() {
+        if(providerConfig.getSignatureAlg() == CryptoAlgorithmEnum.ECDSA){
+            return new ECDSASignatureValidator();
+        }
+        throw new RuntimeException("Unsupported signature algorithm "+providerConfig.getSignatureAlg());
     }
-
 }

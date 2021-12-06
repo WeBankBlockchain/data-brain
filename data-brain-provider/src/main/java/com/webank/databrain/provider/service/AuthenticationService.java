@@ -42,10 +42,8 @@ public class AuthenticationService {
     public void authenticate(AuthenticateRequestVO authenticateRequestVO){
         CredentialInfo credentialInfo = authenticateRequestVO.getCredentialInfo();
         AuthorizeInfo authorizeInfo = authenticateRequestVO.getAuthorizeInfo();
-        // 0. 用户地址有效性核验
-        credentialValidateHandler.validateUserSignature(credentialInfo, authorizeInfo.getUserAddress());
         // 1. 核验用户身份
-        CredentialValidationResult credentialValidationResult = this.credentialValidateHandler.validateUserCredential(credentialInfo);
+        CredentialValidationResult credentialValidationResult = this.credentialValidateHandler.validateUserCredential(authenticateRequestVO);
         if(!credentialValidationResult.isSuccess()){
             throw new ProviderException(ProviderErrorCode.ID_NOT_AUTHENTICATED, credentialValidationResult.getReason());
         }
