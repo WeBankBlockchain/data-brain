@@ -37,7 +37,7 @@ public class AuthByPwd implements CredentialAuthenticator<UserIdPwd> {
 
     @Override
     public UserCredentialModeEnum supportedMode() {
-        return UserCredentialModeEnum.UsernamePwd;
+        return UserCredentialModeEnum.IdNoPwd;
     }
 }
 

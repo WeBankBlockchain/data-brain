@@ -51,11 +51,11 @@ public class CredentialValidateHandler {
         ICredentialData userInfo = authenticator.convert(credentials.getCredentialInfo());
 
         //3. Do validation
-        this.validateUserSignature(userInfo.getId(), address);
+        this.validateUserSignature(providerConfig.getCredentialAuthMode(), userInfo.getId(), address);
     }
 
-    public void validateUserSignature(String userId, String address){
-
+    public void validateUserSignature(UserCredentialModeEnum credentialModeEnum, String userId, String address){
+        //用户
     }
 
 

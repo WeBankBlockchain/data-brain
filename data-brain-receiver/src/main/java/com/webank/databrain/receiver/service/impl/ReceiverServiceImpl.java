@@ -8,6 +8,8 @@ import com.webank.databrain.receiver.config.ReceiverConfig;
 import com.webank.databrain.receiver.handler.AuthRecordHandler;
 import com.webank.databrain.receiver.handler.DataTransferHandler;
 import com.webank.databrain.receiver.handler.SignatureHandler;
+import com.webank.databrain.receiver.model.AuthReceiveRequestVO;
+import com.webank.databrain.receiver.model.BizDataContext;
 import com.webank.databrain.receiver.model.RedirectRequestVO;
 import com.webank.databrain.receiver.service.ReceiverService;
 import com.webank.databrain.receiver.handler.CheckDataHandler;
@@ -59,8 +61,13 @@ public class ReceiverServiceImpl implements ReceiverService {
         this.handleFinalData(authToken.getAuthRecordId(), rawData);
     }
 
-    protected void handleFinalData(String authRecord, byte[] data) {
+    @Override
+    public void onAuthRecordReceived(AuthReceiveRequestVO request) {
+        authRecordHandler.saveAuthRecord(request);
+    }
 
+    protected void handleFinalData(String authRecord, byte[] data) {
+//        BizDataContext bizDataContext = this.authRecordHandler.load
     }
 
 

@@ -3,6 +3,7 @@ package com.webank.databrain.receiver.handler;
 
 import com.webank.databrain.common.enums.auth.TransferStatusEnum;
 import com.webank.databrain.common.model.AuthRecord;
+import com.webank.databrain.receiver.model.AuthReceiveRequestVO;
 
 /**
  * 进行授权存证的状态更新
@@ -26,4 +27,7 @@ public class AuthRecordHandler {
         return null;
     }
 
+    public void saveAuthRecord(AuthReceiveRequestVO request) {
+
+    }
 }

@@ -1,5 +1,7 @@
-package com.webank.databrain.receiver.api;
+package com.webank.databrain.receiver.controller;
 
+import com.webank.databrain.common.model.CommonResponse;
+import com.webank.databrain.receiver.model.AuthReceiveRequestVO;
 import com.webank.databrain.receiver.model.AuthRecordInfo;
 import com.webank.databrain.receiver.model.RedirectRequestVO;
 import com.webank.databrain.receiver.service.ReceiverService;
@@ -9,31 +11,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * 授权凭证ID
  * @author wesleywang
  * @Description:
  * @date 2021/11/26
  */
-@RestController("api/consumer")
-public class CallbackController {
+@RestController("api/receiver/auth")
+public class ReceiverController {
     @Autowired
     private ReceiverService receiverService;
 
-
     /**
-     * 授权回调
+     * 从业务前端接收授权凭证
+     * @return
      */
-    @PostMapping("organizer/callback")
-    public void callbackByOrganizer(@RequestBody AuthRecordInfo authRecordInfo){
-
+    @PostMapping()
+    public CommonResponse receiveAuthRecord(@RequestBody AuthReceiveRequestVO request) {
+        receiverService.onAuthRecordReceived(request);
+        return CommonResponse.success();
     }
-
 
     /**
      * 授权回调
      */
     @PostMapping("provider/callback")
-    public void callbackByProvider(@RequestBody RedirectRequestVO redirectRequestVO){
+    public CommonResponse callbackByProvider(@RequestBody RedirectRequestVO redirectRequestVO){
         receiverService.onProviderCallback(redirectRequestVO);
+        return CommonResponse.success();
     }
 
 }

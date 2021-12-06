@@ -1,5 +1,6 @@
 package com.webank.databrain.receiver.service;
 
+import com.webank.databrain.receiver.model.AuthReceiveRequestVO;
 import com.webank.databrain.receiver.model.RedirectRequestVO;
 
 /**
@@ -15,4 +16,5 @@ public interface ReceiverService {
      */
     void onProviderCallback(RedirectRequestVO redirectRequestVO);
 
+    void onAuthRecordReceived(AuthReceiveRequestVO request);
 }
